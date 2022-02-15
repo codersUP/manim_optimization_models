@@ -71,7 +71,7 @@ def f_func(vars, func):
     return lambda values: func_eval(vars, values, parse_expr(func))
 
 
-def branch_and_bound_int(vars, func, constraints, initial_point):
+def branch_and_bound_int(vars, func, constraints, initial_point, verbose=False):
     vars = [sp.symbols(i) for i in vars]
     constraints_m = get_constraints(constraints, vars)
 
@@ -100,8 +100,12 @@ def branch_and_bound_int(vars, func, constraints, initial_point):
         values = act["initial_point"]
         cons = act["constraints"]
 
-        m = minimize(f_func(vars, func), values, constraints=cons)
-        print(m)
+        m = minimize(f_func(vars, func), values, method="SLSQP", constraints=cons)
+
+        if verbose:
+            print()
+            print(act["added_constraints"])
+            print(m)
 
         if m.success and m.fun < min:
             all_int = True
@@ -109,9 +113,11 @@ def branch_and_bound_int(vars, func, constraints, initial_point):
                 if not check_int(v, EPSILON):
                     all_int = False
 
+                    int_v = int(v) if v >= 0 else int(v) - 1
+
                     left_children = {
                         "father": act,
-                        "added_constraints": sp.LessThan(vars[i], int(v)),
+                        "added_constraints": sp.LessThan(vars[i], int_v),
                         "childrens": [],
                         "lv": lv + 1,
                         "step": step + 1,
@@ -120,7 +126,7 @@ def branch_and_bound_int(vars, func, constraints, initial_point):
                         + [
                             {
                                 "type": "ineq",
-                                "fun": c_func(vars, int(v) - vars[i]),
+                                "fun": c_func(vars, int_v - vars[i]),
                             }
                         ],
                     }
@@ -130,7 +136,7 @@ def branch_and_bound_int(vars, func, constraints, initial_point):
 
                     right_children = {
                         "father": act,
-                        "added_constraints": sp.GreaterThan(vars[i], int(v) + 1),
+                        "added_constraints": sp.GreaterThan(vars[i], int_v + 1),
                         "childrens": [],
                         "lv": lv + 1,
                         "step": step + 1,
@@ -139,7 +145,7 @@ def branch_and_bound_int(vars, func, constraints, initial_point):
                         + [
                             {
                                 "type": "ineq",
-                                "fun": c_func(vars, vars[i] - (int(v) + 1)),
+                                "fun": c_func(vars, vars[i] - (int_v + 1)),
                             }
                         ],
                     }
@@ -158,7 +164,7 @@ def main():
     f = open("bab.json")
     data = json.load(f)
 
-    m = branch_and_bound_int(**data)
+    m = branch_and_bound_int(**data, verbose=True)
     min = m["min"]
     min_values = m["min_values"]
     tree = m["tree"]
