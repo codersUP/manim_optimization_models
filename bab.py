@@ -103,6 +103,7 @@ def branch_and_bound_int(vars, func, constraints, initial_point, verbose=False):
         "step": step,
         "initial_point": initial_point.copy(),
         "constraints": constraints_m.copy(),
+        "best_point": [],
     }
 
     stack = [root]
@@ -115,6 +116,7 @@ def branch_and_bound_int(vars, func, constraints, initial_point, verbose=False):
         cons = act["constraints"]
 
         m = minimize(f_func(vars, func), values, method="SLSQP", constraints=cons)
+        act["best_point"] = m.x
 
         if verbose:
             print()
