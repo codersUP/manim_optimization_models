@@ -1,6 +1,10 @@
 import sympy as sp
 from scipy.optimize import minimize
-from sympy.parsing.sympy_parser import parse_expr
+from sympy.parsing.sympy_parser import (
+    parse_expr,
+    standard_transformations,
+    convert_equals_signs,
+)
 import numpy as np
 from pprint import pprint
 import json
@@ -28,9 +32,9 @@ def move_inequality_constants(ineq):
         return sp.GreaterThan(l - r, 0)
     elif op == ">":
         return sp.StrictGreaterThan(l - r, 0)
-    elif op == "=":
+    elif op == "==":
         return sp.Eq(l - r, 0)
-    raise Exception("no restriction")
+    raise Exception(f"no restriction {l} {op} {r}")
 
 
 def func_eval(x_vector, value_vector, func):
@@ -47,7 +51,11 @@ def get_constraints(constraints, vars):
     g = []
 
     for c in constraints:
-        cm = move_inequality_constants(parse_expr(c))
+        cm = move_inequality_constants(
+            parse_expr(
+                c, transformations=standard_transformations + (convert_equals_signs,)
+            )
+        )
         op = cm.rel_op
 
         if op == "<=" or op == "<" or op == ">=" or op == ">":
@@ -82,7 +90,13 @@ def branch_and_bound_int(vars, func, constraints, initial_point, verbose=False):
     root = {
         "father": None,
         "added_constraints": [
-            move_inequality_constants(parse_expr(c)) for c in constraints
+            move_inequality_constants(
+                parse_expr(
+                    c,
+                    transformations=standard_transformations + (convert_equals_signs,),
+                )
+            )
+            for c in constraints
         ],
         "childrens": [],
         "lv": 0,
