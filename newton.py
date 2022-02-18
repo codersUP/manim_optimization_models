@@ -33,8 +33,8 @@ def newton(vars, func, initial_point, cycles=100, verbose=False):
     )
 
     return {
-        "min": m["fun"],
-        "min_value": m["x"],
+        "min": m["x"],
+        "min_value": m["fun"],
         "points": m["allvecs"],
     }
 
