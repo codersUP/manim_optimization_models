@@ -130,7 +130,6 @@ class BAB2D(Scene):
         vars = data["vars"]
         u_range = data["u_range"]
         v_range = data["v_range"]
-        stroke_width = data["stroke_width"]
 
         if len(vars) != 1:
             raise Exception("the model must have 1 variable1")
