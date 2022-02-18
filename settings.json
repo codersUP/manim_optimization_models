@@ -1,0 +1,12 @@
+{
+    "Penalty_number_of_sequence": 20,
+    "Penalty_penalty_factor": 0.1,
+    "Penalty_update_factor": 0.155,
+    "Penalty_constraints" : ["x>=2", "y<=10"],
+    "Penalty_max_or_min": 0,
+    "Penalty_init_point": [2.3, 3],
+    "Penalty_x_range": [-20, 20, 1],
+    "Penalty_y_range": [-20, 20, 1],
+    "Penalty_func" : "x**2+y**2",
+    "Penalty_vars" : ["x", "y"]
+}
