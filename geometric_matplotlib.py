@@ -1,4 +1,3 @@
-#Autor: Bryan Salazar López, Ing. M.Sc. (2021)
 #Librerías necesarias
 import matplotlib.pyplot as plt
 import numpy as np
@@ -111,6 +110,5 @@ plt.annotate('  Solución óptima: {}'.format(ZMAX), (XMAX, YMAX+3))
 plt.grid()
 plt.xlabel('Asientos para fumadores')
 plt.ylabel('Asientos para no fumadores')
-plt.title('Método Gráfico')
 
 plt.show()

@@ -327,11 +327,11 @@ def get_penalty_ineq_constraints_minimize(ineqs):
     result = list()
     total_ineq = move_inequality_constants_minimize(ineqs[0])
     result.append(total_ineq)
-    total_ineq = (sym.Min(0, total_ineq))**2
+    total_ineq = (sym.Max(0, total_ineq))**2
     for c in ineqs[1:]:
         ineq = move_inequality_constants_minimize(c)
         result.append(ineq)
-        total_ineq += (sym.Min(0, ineq))**2
+        total_ineq += (sym.Max(0, ineq))**2
     return result, total_ineq
 
 def get_penalty_func_minimize(func, ineqs, eqs, variables, step):

@@ -14,37 +14,10 @@ h = config.frame_height/7
 x1 = np.arange(-100, 150, 10)
 y1 = np.arange(-100, 150, 10)
 p1 = np.arange(-100, 150, 10)
-# ineqs = []
-# ineqs.append(parse_expr('20*x+50*y <= 3000'))
-# ineqs.append(parse_expr('x+y <= 90'))
-# ineqs.append(parse_expr('y >= 10'))
-# ineqs.append(parse_expr('y >= 0'))
-# ineqs.append(parse_expr('x >= 0'))
-# # la ultima debe ser la de la funcion
-# ineqs.append(parse_expr('10000*x+6000*y = 0'))
-ineqs = []
-ineqs.append('20*x+50*y <= 3000')
-ineqs.append('x+y <= 90')
-ineqs.append('y >= 10')
-ineqs.append('y >= 0')
-ineqs.append('0 <= x')
-# la ultima debe ser la de la funcion
-# ineqs.append('10000*x+6000*y = 0')
-equation = parse_expr('10000*x + 6000*y')
-# ineqs = []
-# ineqs.append(parse_expr('y >= 3'))
-# ineqs.append(parse_expr('x <= 20'))
-# ineqs.append(parse_expr('2*x+y >= 20')) # y >= 20 - 2*x
-# ineqs.append(parse_expr('3*x-2*y >= 7')) # y <= (3*x)/2 - 7/2
-# # la ultima debe ser la de la funcion
-# ineqs.append(parse_expr('50*x+20*y >= 0'))
-# equation = parse_expr('50*x + 20*y')
-# converted = get_constraints_cleared(ineqs)
 
 with open('geometric_aproach.json') as settings:
     data = json.load(settings)
 function_ = data["func"]
-function_ = parse_expr(function_)
 constraints_ = data["constraints"]
 (pairs, _lines, m, n, intersections, intersects_evals, Xmax, Ymax, Zmax, Xmin, Ymin, Zmin) = geometric_aproach(constraints_, function_, x1, y1)
 

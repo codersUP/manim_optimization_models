@@ -85,4 +85,4 @@ def penalty_newton():
         print('the final solution was ', dic['min'])
         return dic
     
-# dict_ = penalty_newton()
+dict_ = penalty_newton()

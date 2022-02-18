@@ -4,7 +4,8 @@ from sympy.parsing.sympy_parser import parse_expr
 import sympy as sym
 from utils import *
 
-def geometric_aproach(ineqs, equation, x1, y1, min_max = 0):
+def geometric_aproach(ineqs, equation, x1, y1):
+    equation = parse_expr(equation)
     equation = sym.Lambda(('x', 'y'), equation)
     ineqs_, eqs_ = get_geometric_ineqs_and_eqs(ineqs)
     converted = get_constraints_cleared(ineqs_)
