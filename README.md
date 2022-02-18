@@ -88,4 +88,16 @@ La implementación se encuentra dentro del archivo `manim_bab.py`y se utiliza pa
 - "v_range" ([float, float]): el intervalo que se generará en el gráfico en el eje y
 - "stroke_width" (float): grosor de las líneas en el gráfico a generar
 
+Ejemplo:
+
+    {
+        "vars": ["x", "y"],
+        "func": "- (7 * x * y / 2.71828 ** ( x ** 2 + y ** 2))",
+        "constraints": ["x >= -2", "y >= -2", "x <= 2", "y <= 2"],
+        "initial_point": [1, 1],
+        "u_range": [-5, 5],
+        "v_range": [-5, 5],
+        "stroke_width": 0.5
+    }
+
 La idea central en esta función es representar la función a minimizar como centro de la animación e ilustrar los distintos nodos de la solución alcanzados mediante un recorrido del arbol de soluciones.
