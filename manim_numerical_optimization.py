@@ -89,7 +89,7 @@ class NO3D(ThreeDScene):
 
         self.play(FadeIn(axes_function))
 
-        method_text = self.add_method_text("Descenso por gradientes")
+        method_text = self.add_method_text("Método de gradiente (Máximo Descenso)")
 
         self.add_text_points_gradient(
             g["points"],
@@ -100,7 +100,7 @@ class NO3D(ThreeDScene):
 
         self.play(FadeOut(method_text))
 
-        method_text = self.add_method_text("Descenso por gradientes conjugados")
+        method_text = self.add_method_text("Método de gradiente conjugado")
 
         self.add_text_points_gradient(
             gc["points"],
@@ -111,10 +111,10 @@ class NO3D(ThreeDScene):
 
         self.play(FadeOut(method_text))
 
-        method_text = self.add_method_text("Newton")
+        method_text = self.add_method_text("Método de Newton")
 
         self.add_text_points_gradient(
-            gc["points"],
+            n["points"],
             axes,
             lambda p: f"point: {p}\nvalue: {func_evaluated(p['point'])}",
             method_text,
@@ -123,7 +123,7 @@ class NO3D(ThreeDScene):
         self.play(FadeOut(method_text))
 
         # self.begin_ambient_camera_rotation(rate=0.1)
-        # self.wait(10)
+        # self.wait(50)
         # self.stop_ambient_camera_rotation()
 
         self.wait()
