@@ -61,7 +61,8 @@ class Penalty(ThreeDScene):
         self.play(Create(axes))
         self.play(Create(graph))
         method_text = Text(
-            f"The point reached was at ({p_dots[-1][0]}, {p_dots[-1][1]}) with a value of {p_dots[-1][2]}"
+            f"The point reached was at \n({p_dots[-1][0]}, {p_dots[-1][1]}) \nwith a value of {p_dots[-1][2]}", font_size=20,
+
         )
         self.add_fixed_in_frame_mobjects(method_text)
         method_text.to_corner(UL)
@@ -73,7 +74,7 @@ class Penalty(ThreeDScene):
             # self.add(p)
             self.play(Create(p))
         self.begin_ambient_camera_rotation(rate=0.3)
-        self.wait(30)
+        self.wait()
         self.stop_ambient_camera_rotation()
 
         self.wait()
