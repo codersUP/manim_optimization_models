@@ -11,7 +11,7 @@ class NO3D(ThreeDScene):
     def add_method_text(self, text):
         method_text = Text(
             text,
-            font_size=200,
+            font_size=20,
         )
         self.add(method_text)
 
@@ -20,10 +20,8 @@ class NO3D(ThreeDScene):
 
         return method_text
 
-    def add_text_points_gradient(
-        self, points, axes, func_evaluated, text_func, method_text, plot_gradient=None
-    ):
-        line = None
+    def add_text_points_gradient(self, points, axes, text_func, method_text):
+        points3d = VGroup()
 
         for i, point in enumerate(points):
             text_act = Text(
@@ -38,6 +36,8 @@ class NO3D(ThreeDScene):
                 color=BLUE,
             )
 
+            points3d += point3d
+
             self.add(text_act)
 
             self.add_fixed_in_frame_mobjects(text_act)
@@ -45,32 +45,10 @@ class NO3D(ThreeDScene):
                 FadeIn(point3d),
                 Write(text_act.next_to(method_text, DOWN).align_on_border(LEFT)),
             )
-
-            if plot_gradient and i != len(points) - 1:
-                r = (
-                    point["point"][0] + plot_gradient(point)[0],
-                    point["point"][1] + plot_gradient(point)[1],
-                )
-                l = (
-                    point["point"][0] - plot_gradient(point)[0],
-                    point["point"][1] - plot_gradient(point)[1],
-                )
-
-                if line:
-                    self.play(FadeOut(line))
-
-                line = Arrow3D(
-                    [l[0], l[1], func_evaluated(l)[0]],
-                    [r[0], r[1], func_evaluated(r)[0]],
-                )
-
-                self.play(Create(line))
-
             self.play(point3d.animate.set_color(GREEN), FadeOut(text_act))
             self.wait(1)
 
-        if line:
-            self.play(FadeOut(line))
+        self.play(FadeOut(points3d))
 
     def construct(self):
         f = open("numerical_optimization.json")
@@ -116,10 +94,8 @@ class NO3D(ThreeDScene):
         self.add_text_points_gradient(
             g["points"],
             axes,
-            func_evaluated,
             lambda p: f"point: {p['point']}\nvalue: {p['value']}\ngradient: {p['gradient']}\nalpha: {p['step_arrived']}",
             method_text,
-            plot_gradient=lambda p: p["gradient"],
         )
 
         self.play(FadeOut(method_text))
@@ -129,10 +105,8 @@ class NO3D(ThreeDScene):
         self.add_text_points_gradient(
             gc["points"],
             axes,
-            func_evaluated,
             lambda p: f"point: {p['point']}\nvalue: {p['value']}\ns: {p['s']}\nalpha: {p['step_arrived']}",
             method_text,
-            plot_gradient=lambda p: p["s"],
         )
 
         self.play(FadeOut(method_text))
@@ -142,7 +116,6 @@ class NO3D(ThreeDScene):
         self.add_text_points_gradient(
             gc["points"],
             axes,
-            func_evaluated,
             lambda p: f"point: {p}\nvalue: {func_evaluated(p['point'])}",
             method_text,
         )
