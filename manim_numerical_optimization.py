@@ -20,7 +20,9 @@ class NO3D(ThreeDScene):
 
         return method_text
 
-    def add_text_points_gradient(self, points, axes, text_func, method_text):
+    def add_text_points_gradient(
+        self, points, axes, text_func, method_text, get_coordintes, delete_points=True
+    ):
         points3d = VGroup()
 
         for i, point in enumerate(points):
@@ -30,9 +32,7 @@ class NO3D(ThreeDScene):
             )
 
             point3d = Dot3D(
-                point=axes.coords_to_point(
-                    point["point"][0], point["point"][1], point["value"]
-                ),
+                point=axes.coords_to_point(*get_coordintes(point)),
                 color=BLUE,
             )
 
@@ -48,7 +48,8 @@ class NO3D(ThreeDScene):
             self.play(point3d.animate.set_color(GREEN), FadeOut(text_act))
             self.wait(1)
 
-        self.play(FadeOut(points3d))
+        if delete_points:
+            self.play(FadeOut(points3d))
 
     def construct(self):
         f = open("numerical_optimization.json")
@@ -96,6 +97,11 @@ class NO3D(ThreeDScene):
             axes,
             lambda p: f"point: {p['point']}\nvalue: {p['value']}\ngradient: {p['gradient']}\nalpha: {p['step_arrived']}",
             method_text,
+            get_coordintes=lambda point: [
+                point["point"][0],
+                point["point"][1],
+                point["value"],
+            ],
         )
 
         self.play(FadeOut(method_text))
@@ -107,6 +113,11 @@ class NO3D(ThreeDScene):
             axes,
             lambda p: f"point: {p['point']}\nvalue: {p['value']}\ns: {p['s']}\nalpha: {p['step_arrived']}",
             method_text,
+            get_coordintes=lambda point: [
+                point["point"][0],
+                point["point"][1],
+                point["value"],
+            ],
         )
 
         self.play(FadeOut(method_text))
@@ -116,14 +127,20 @@ class NO3D(ThreeDScene):
         self.add_text_points_gradient(
             n["points"],
             axes,
-            lambda p: f"point: {p}\nvalue: {func_evaluated(p['point'])}",
+            lambda p: f"point: {p}\nvalue: {func_evaluated(p)}",
             method_text,
+            get_coordintes=lambda point: [
+                point[0],
+                point[1],
+                func_evaluated(point),
+            ],
+            delete_points=False,
         )
 
         self.play(FadeOut(method_text))
 
-        # self.begin_ambient_camera_rotation(rate=0.1)
-        # self.wait(50)
-        # self.stop_ambient_camera_rotation()
+        self.begin_ambient_camera_rotation(rate=0.1)
+        self.wait(50)
+        self.stop_ambient_camera_rotation()
 
         self.wait()
