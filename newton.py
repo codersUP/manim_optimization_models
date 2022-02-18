@@ -10,7 +10,7 @@ def convert_list_to_tuples(list):
     return reduce(lambda a, b: a + (b,), list, ())
 
 
-def newton(vars, func, initial_point, cycles=100, verbose=False):
+def newton(vars, func, initial_point, cycles=100, verbose=False, *args, **kwargs):
     vars = convert_list_to_tuples([sp.symbols(v) for v in vars])
 
     func = sp.parse_expr(func)

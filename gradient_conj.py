@@ -17,7 +17,9 @@ def module_of_vector(vector):
     return sum(map(lambda x: x * x, vector))
 
 
-def gradient_conj(vars, func, initial_point, cycles=100, verbose=False):
+def gradient_conj(
+    vars, func, initial_point, cycles=100, verbose=False, *args, **kwargs
+):
     vars = convert_list_to_tuples([sp.symbols(v) for v in vars])
 
     func = sp.parse_expr(func)
