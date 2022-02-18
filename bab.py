@@ -79,7 +79,9 @@ def f_func(vars, func):
     return lambda values: func_eval(vars, values, parse_expr(func))
 
 
-def branch_and_bound_int(vars, func, constraints, initial_point, verbose=False):
+def branch_and_bound_int(
+    vars, func, constraints, initial_point, verbose=False, *args, **kwargs
+):
     vars = [sp.symbols(i) for i in vars]
     constraints_m = get_constraints(constraints, vars)
 
