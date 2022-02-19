@@ -5,8 +5,8 @@ import json
 from manim import *
 
 # # configure the width and height
-# config.frame_width =50
-# config.frame_height =50
+config.frame_width =50
+config.frame_height =50
 # w = config.frame_width/7
 # h = config.frame_height/7
 
