@@ -41,8 +41,9 @@ class BAB3D(ThreeDScene):
         self.play(FadeOut(text_act))
 
     def construct(self):
-        f = open("bab.json")
-        data = json.load(f)
+        inputPath = os.path.abspath(os.path.join(__file__, "../input.json"))
+        with open(inputPath, "r") as fp:
+            data = json.load(fp)
 
         func = data["func"]
         vars = data["vars"]
@@ -123,8 +124,9 @@ class BAB2D(Scene):
         self.play(FadeOut(text_act))
 
     def construct(self):
-        f = open("bab.json")
-        data = json.load(f)
+        inputPath = os.path.abspath(os.path.join(__file__, "../input.json"))
+        with open(inputPath, "r") as fp:
+            data = json.load(fp)
 
         func = data["func"]
         vars = data["vars"]

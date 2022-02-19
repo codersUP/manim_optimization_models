@@ -1,7 +1,7 @@
 from manim import *
-import gradient
-import gradient_conj
-import newton
+from .gradient import gradient
+from .gradient_conj import gradient_conj
+from .newton import newton
 import json
 import sympy as sp
 import numpy as np
@@ -52,8 +52,9 @@ class NO3D(ThreeDScene):
             self.play(FadeOut(points3d))
 
     def construct(self):
-        f = open("numerical_optimization.json")
-        data = json.load(f)
+        inputPath = os.path.abspath(os.path.join(__file__, "../input.json"))
+        with open(inputPath, "r") as fp:
+            data = json.load(fp)
 
         func = data["func"]
         vars = data["vars"]
@@ -64,9 +65,9 @@ class NO3D(ThreeDScene):
         if len(vars) != 2:
             raise Exception("the model must have 2 variables")
 
-        g = gradient.gradient(**data)
-        gc = gradient_conj.gradient_conj(**data)
-        n = newton.newton(**data)
+        g = gradient(**data)
+        gc = gradient_conj(**data)
+        n = newton(**data)
 
         func = sp.parse_expr(func)
         func_lambda = sp.Lambda(vars, func)
@@ -189,8 +190,9 @@ class NO2D(Scene):
             self.play(FadeOut(points2d))
 
     def construct(self):
-        f = open("numerical_optimization.json")
-        data = json.load(f)
+        inputPath = os.path.abspath(os.path.join(__file__, "../input.json"))
+        with open(inputPath, "r") as fp:
+            data = json.load(fp)
 
         func = data["func"]
         vars = data["vars"]
@@ -204,9 +206,9 @@ class NO2D(Scene):
         func_lambda = sp.Lambda(vars, func)
         func_evaluated = lambda x: np.array([func_lambda((x))], dtype=float)
 
-        g = gradient.gradient(**data)
-        gc = gradient_conj.gradient_conj(**data)
-        n = newton.newton(**data)
+        g = gradient(**data)
+        gc = gradient_conj(**data)
+        n = newton(**data)
 
         axes = Axes(
             x_range=[u_range[0], u_range[1], 1],
