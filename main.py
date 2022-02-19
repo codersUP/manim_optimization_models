@@ -1,8 +1,11 @@
 from src.simplex.manim_model import Simplex2D as X, Simplex3D as Y
 from src.line_search.line_search import ThreeDCanvas as lineSearch
+from src.cutting_planes.gomory_cutting_planes import Canvas as cuttingPlanes
 
 class TwoDSimplex(X): pass
 
 class ThreeDSimplex(Y): pass
 
 class LineSearch(lineSearch): pass
+
+class CuttingPlanes(cuttingPlanes): pass

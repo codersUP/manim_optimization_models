@@ -2,10 +2,10 @@ from manim import *
 import itertools
 import numpy as np
 from random import choice
-from utils import GetIntersections, colors#get_intersections_between_two_vmobs
-import cuttingPlanes as cp
-from milpInstance import MILPInstance
-from input_parser import load_cp_model
+from .utils import GetIntersections, colors#get_intersections_between_two_vmobs
+from .cuttingPlanes import bnSolve, gomoryMixedIntegerCut, liftAndProject
+from .milpInstance import MILPInstance
+from .input_parser import load_cp_model
 
 # cut types
 # gomoryMixedIntegerCut (may have issues with manim's interpolation, but it's more efficient)
@@ -34,9 +34,9 @@ class Canvas(Scene):
       self.play(Create(c_))
 
     # algorithm that generates the cutting planes, as stated in the beggining of the script, there are two methods, liftAndProject, and gomoryMixedIntegerCut
-    sol, cc = cp.bnSolve(module,
-          whichCuts = [(cp.gomoryMixedIntegerCut, {})],   # this one generates some really odd cuts, and manim is buggy when interpolating those lines with too big coefficients in a small scale
-          # whichCuts = [(cp.liftAndProject, {})],    # this one is less efficient and generates multiple repeated cuts
+    sol, cc = bnSolve(module,
+          whichCuts = [(gomoryMixedIntegerCut, {})],   # this one generates some really odd cuts, and manim is buggy when interpolating those lines with too big coefficients in a small scale
+          # whichCuts = [(liftAndProject, {})],    # this one is less efficient and generates multiple repeated cuts
           display = False, debug_print = False, use_cglp = False)
     
     # plot 'em all again

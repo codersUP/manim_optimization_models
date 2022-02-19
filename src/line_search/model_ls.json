@@ -3,9 +3,9 @@
         "x",
         "y"
     ],
-    "func": "x**2 *y",
+    "func": "x**2*y",
     "constraints": [
-        "x**2 + y**2 <= 3"
+        "x**2+y**2 <= 3"
     ],
     "initial_point": [
         1.0,
@@ -19,6 +19,6 @@
         -2.0,
         2.0
     ],
-    "camera_phi": -100,
-    "camera_theta": 45
+    "camera_phi": 45,
+    "camera_theta": -120
 }

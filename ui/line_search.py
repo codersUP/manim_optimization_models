@@ -14,8 +14,8 @@ def init_state():
 
     # Variable initializations
     st.session_state.variables_size = 2
-    st.session_state.phi = -120
-    st.session_state.theta = 45
+    st.session_state.phi = 45
+    st.session_state.theta = -120
 
 
 def linesearch():
@@ -117,12 +117,15 @@ def linesearch():
         
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "LineSearch"])
-        video_path = "media/videos/line_search/480p15/ThreeDCanvas.mp4"
+        video_path = "media/videos/main/480p15/LineSearch.mp4"
 
         # clear the placeholder at the end
         placeholder.empty()
 
-        st.video(video_path)
+        try:
+            st.video(video_path)
+        except FileNotFoundError:
+            st.write('Whoops, something went wront, check the streamlit console for more details')
 
         # clear the placeholder at the end
         placeholder.empty()
