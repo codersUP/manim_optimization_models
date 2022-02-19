@@ -72,7 +72,7 @@ class Geo_Manim(Scene):
         x1 = np.arange(-100, 150, 10)
         y1 = np.arange(-100, 150, 10)
 
-        inputPath = os.path.abspath(os.path.join(__file__, "../geometric_apreach.json"))
+        inputPath = os.path.abspath(os.path.join(__file__, "../geometric_aproach.json"))
         with open(inputPath, 'r') as settings:
             data = json.load(settings)
         function_ = data["func"]

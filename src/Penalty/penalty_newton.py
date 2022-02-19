@@ -11,7 +11,7 @@ import os
 # minimize = 0, maximize = 1
 def penalty_newton():
     inputPath = os.path.abspath(os.path.join(__file__, "../penalty_settings.json"))
-    with open(inputPath) as settings:
+    with open(inputPath, 'r') as settings:
         data = json.load(settings)
     numseq      = data['Penalty_number_of_sequence']
     r           = data['Penalty_penalty_factor']

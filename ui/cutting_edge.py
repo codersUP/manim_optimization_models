@@ -1,4 +1,8 @@
 import streamlit as st
+import sys
+import os
+import json
+import subprocess
 
 
 def init_state():
@@ -25,7 +29,7 @@ def cutedge():
             value=st.session_state.variables_size, 
             key="variables_size",
             min_value=2, 
-            max_value=3, 
+            max_value=2, 
             step=1, 
             help="varaiables de su ecuación no lineal"
         )
@@ -50,11 +54,11 @@ def cutedge():
         var_sections = []
         for x in range(0, contr_cant, 4):
             var_sections.extend(st.columns(min(4, contr_cant - x)))
-        contrains = []
+        constrains = []
         for i, section in enumerate(var_sections):
             with section:
                 st.latex(r"r_{%d}\\[-100pt]" % (i))
-                contrains.append(st.text_input("", key=f"key_r{i}"))
+                constrains.append(st.text_input("", key=f"key_r{i}"))
 
 
     st.latex(r"\text{Intervalo a graficar en el eje X:}")
@@ -92,13 +96,40 @@ def cutedge():
     for j, col in enumerate(st.columns(var_cant)):
         with col:
             st.latex(r"c_{%d}\\[-100pt]" % (j))
-            st.number_input("", key=f"key_c_{j}")
+            C.append(st.number_input("", key=f"key_c_{j}"))
 
     run = st.button("Computar")
     if run:
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
+
+        data = {
+            "vars": [v for v in var_names],
+            "func": form,
+            "constraints": constrains,
+            "x_range": [u0, u1],
+            "y_range": [v0, v1],
+            "A": A,
+            "b": B,
+            "c": C
+
+        }
+        json_object = json.dumps(data, indent = 4)
         
+        path = os.path.abspath(os.path.join(__file__, "../../src/cutting_planes/model_cp.json"))
+        with open(path, "w") as outfile:
+            outfile.write(json_object)
+
+        
+        # Execute Manim graphics
+        subprocess.run(["manim", "-ql", "main.py", "CuttingPlanes"])
+        video_path = "media/videos/main/480p15/CuttingPlanes.mp4"
+
+        # clear the placeholder at the end
+        placeholder.empty()
+
+        st.video(video_path)
+
         # <some logic here to run the code HERE>
         # variables are
         # var_names: Nombre de las variables

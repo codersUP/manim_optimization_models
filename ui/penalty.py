@@ -119,35 +119,39 @@ def penalty():
     if run:
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
-        with open('../src/Penalty/penalty_settings.json', 'r') as settings:
-            data = json.load(settings)
+        path = os.path.abspath(
+            os.path.join(__file__, "../../src/Geometric/geometric_aproach.json")
+        )
+        # with open(path, 'r') as settings:
+        #     data = json.load(settings)
+        data = {}
         data["Penalty_number_of_sequence"]= seq,
         data["Penalty_penalty_factor"]= pfactor,
         data["Penalty_update_factor"]= ufactor,
         data["Penalty_constraints"]= contrains,
         data["Penalty_max_or_min"]= minmax,
-        data["Penalty_init_point"]= initial,
-        data["Penalty_x_range"]= x_axis+[1],
-        data["Penalty_y_range"]= y_axis+[1],
+        data["Penalty_init_point"]= [x0, y0],
+        data["Penalty_x_range"]= [u0, u1, 1],
+        data["Penalty_y_range"]= [v0, v1, 1],
         data["Penalty_func"]= form,
         data["Penalty_vars"]= var_names
-        
-        with open('../src/Penalty/penalty_settings.json', 'w') as settings:
-            json.dump(data, settings)
+        json_object = json.dumps(data, indent = 4)
+        with open(path, 'w') as settings:
+            settings.write(json_object)
             
         # Execute Manim graphics
-        # subprocess.run(["manim", "-ql", "main.py", "ThreeDPenalty_Manim"])
-        # video_path = "media/videos/Penalty_Manim/480p15/Penalty_Manim_ManimCE_v0.14.0.mp4"
+        subprocess.run(["manim", "-ql", "main.py", "ThreeDPenalty_Manim"])
+        video_path = "media/videos/Penalty_Manim/480p15/Penalty_Manim_ManimCE_v0.14.0.mp4"
         # # with open(".temp", "r") as fp:
         # #     msg = fp.read()
 
         
         # # os.remove(".temp")
         # # clear the placeholder at the end
-        # placeholder.empty()
+        placeholder.empty()
 
-        # st.write("Resultado")
-        # st.video(video_path)
+        st.write("Resultado")
+        st.video(video_path)
         # <some logic here to run the code HERE>
         # variables are
         # var_names: Nombre de las variables

@@ -1,7 +1,7 @@
 import json
 from sympy import *
 import numpy as np
-from coinor.cuppy.milpInstance import MILPInstance
+from .milpInstance import MILPInstance
 
 def load_model(filepath):
   model_json = json.load(open(filepath))

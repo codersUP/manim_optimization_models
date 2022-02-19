@@ -53,27 +53,30 @@ def geo():
     if run:
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
-        with open('../src/Geometric/geometric_aproach.json', 'r') as settings:
+        path = os.path.abspath(
+            os.path.join(__file__, "../../src/Geometric/geometric_aproach.json")
+        )
+        with open(path, 'r') as settings:
             data = json.load(settings)
         data["func"] = form
         data["constraints"] = contrains
         
-        with open('../src/Geometric/geometric_aproach.json', 'w') as settings:
-            json.dump(data, settings)
+        with open(path, 'w') as settings:
+            settings.write(data)
             
         # Execute Manim graphics
-        # subprocess.run(["manim", "-ql", "main.py", "TwoDGeo_Manim"])
-        # video_path = "./media/videos/Geo_Manim/480p15/Geo_Manim_ManimCE_v0.14.0.mp4"
+        subprocess.run(["manim", "-ql", "main.py", "TwoDGeo_Manim"])
+        video_path = "media/videos/Geo_Manim/480p15/Geo_Manim_ManimCE_v0.14.0.mp4"
         # # with open(".temp", "r") as fp:
         # #     msg = fp.read()
 
         
         # # os.remove(".temp")
         # # clear the placeholder at the end
-        # placeholder.empty()
+        placeholder.empty()
 
         # st.write("Proyección sobre el plano XY")
-        # st.video(video_path)
+        st.video(video_path)
         # st.write(msg)
 
         # if not video_path2 is None:

@@ -58,7 +58,7 @@ def save_process(my_dict):
     for key in my_dict.keys():
         data[key] = my_dict[key]
     with open(inputPath, 'w') as fp:
-        json.dump(data, fp)
+        fp.write(data, fp)
 
 def load_saved_data(key):   
     inputPath = os.path.abspath(os.path.join(__file__, "../data.json"))

@@ -1,4 +1,9 @@
 import streamlit as st
+import sys
+import os
+import json
+import subprocess
+
 
 
 def init_state():
@@ -9,8 +14,8 @@ def init_state():
 
     # Variable initializations
     st.session_state.variables_size = 2
-    st.session_state.phi = -120
-    st.session_state.theta = 45
+    st.session_state.phi = 45
+    st.session_state.theta = -120
 
 
 def linesearch():
@@ -27,7 +32,7 @@ def linesearch():
             value=st.session_state.variables_size, 
             key="variables_size",
             min_value=2, 
-            max_value=3, 
+            max_value=2, 
             step=1, 
             help="varaiables de su ecuación no lineal"
         )
@@ -52,16 +57,16 @@ def linesearch():
         var_sections = []
         for x in range(0, contr_cant, 4):
             var_sections.extend(st.columns(min(4, contr_cant - x)))
-        contrains = []
+        constrains = []
         for i, section in enumerate(var_sections):
             with section:
                 st.latex(r"r_{%d}\\[-100pt]" % (i))
-                contrains.append(st.text_input("", key=f"key_r{i}"))
+                constrains.append(st.text_input("", key=f"key_r{i}"))
 
     st.latex(r"\text{Punto inicial:}")
-    x_axis = st.columns(2)
-    x0 = x_axis[0].number_input("X")
-    y1 = x_axis[1].number_input("Y")
+    initial_p = st.columns(2)
+    x0 = initial_p[0].number_input("X")
+    y1 = initial_p[1].number_input("Y")
 
     st.latex(r"\text{Intervalo a graficar en el eje X:}")
     x_axis = st.columns(2)
@@ -92,16 +97,35 @@ def linesearch():
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
         
-        # <some logic here to run the code HERE>
-        # variables are
-        # var_names: Nombre de las variables
-        # form: Formula
-        # contrains: Condiciones de la formula
-        # u0, u1: Rango a graficar en las X
-        # v0, v1: Rango a graficar en las Y
-        # A: Matriz de coeficientes
-        # B: Terminos ind
-        # C: Coeficientes de la func objetivo
+        data = {
+            "vars": [v for v in var_names],
+            "func": form,
+            "constraints": constrains,
+            "initial_point": [x0, y1],
+            "x_range": [u0, u1],
+            "y_range": [v0, v1],
+            "camera_phi": phi,
+            "camera_theta": theta
+
+        }
+        json_object = json.dumps(data, indent = 4)
         
+        path = os.path.abspath(os.path.join(__file__, "../../src/line_search/model_ls.json"))
+        with open(path, "w") as outfile:
+            outfile.write(json_object)
+
+        
+        # Execute Manim graphics
+        subprocess.run(["manim", "-ql", "main.py", "LineSearch"])
+        video_path = "media/videos/main/480p15/LineSearch.mp4"
+
+        # clear the placeholder at the end
+        placeholder.empty()
+
+        try:
+            st.video(video_path)
+        except FileNotFoundError:
+            st.write('Whoops, something went wront, check the streamlit console for more details')
+
         # clear the placeholder at the end
         placeholder.empty()

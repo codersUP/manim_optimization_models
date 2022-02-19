@@ -153,7 +153,7 @@ La idea central detrás del algorítmo es ir agregando restricciones mientras la
 
 ## Graficar con manim
 
-La implementación se encuentra dentro del archivo `manim_bab.py`y se utiliza para generar una animación del proceso de optimización utilizando ramificación y acotación de una problemática planteada dentro de un archivo que debe ser creado con el nombre `bab.json`. Esta debe tener la siguiente estructura:
+La implementación se encuentra dentro del archivo `manim_bab.py`y se utiliza para generar una animación del proceso de optimización utilizando ramificación y acotación de una problemática planteada dentro de un archivo que debe ser creado con el nombre `input.json`. Esta debe tener la siguiente estructura:
 
     {
         "vars": vars,
@@ -251,7 +251,7 @@ Las ideas detrás de estos algoritmos consiste en dado un punto inicial desplaza
 
 ## Graficar con manim
 
-La implementación se encuentra dentro del archivo `manim_numerical_optimization.py`y se utiliza para generar una animación del proceso de optimización utilizando distintos métodos de optimización numérica para problemas no lineales, la problemática debe estar planteada dentro de un archivo que debe ser creado con el nombre `numerical_optimization.json`. Esta debe tener la siguiente estructura:
+La implementación se encuentra dentro del archivo `manim_numerical_optimization.py`y se utiliza para generar una animación del proceso de optimización utilizando distintos métodos de optimización numérica para problemas no lineales, la problemática debe estar planteada dentro de un archivo que debe ser creado con el nombre `input.json`. Esta debe tener la siguiente estructura:
 
     {
         "vars": vars,

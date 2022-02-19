@@ -58,7 +58,6 @@ colors = [
     GRAY_C,
     GRAY_D,
     GRAY_E,
-    BLACK,
     LIGHTER_GRAY,
     LIGHT_GRAY,
     GRAY,
@@ -121,5 +120,5 @@ colors = [
     ORANGE,
     LIGHT_BROWN,
     DARK_BROWN,
-GRAY_BROWN
+    GRAY_BROWN
 ]
