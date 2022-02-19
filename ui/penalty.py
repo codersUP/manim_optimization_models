@@ -67,7 +67,10 @@ def penalty():
         for i, section in enumerate(var_sections):
             with section:
                 st.latex(r"r_{%d}\\[-100pt]" % (i))
-                contrains.append(st.text_input("", key=f"key_r{i}", value=st.session_state.example[i]))
+                try:
+                    contrains.append(st.text_input("", key=f"key_r{i}", value=st.session_state.example[i]))
+                except Exception as e:
+                    contrains.append(st.text_input("", key=f"key_r{i}"))
 
     st.latex(r"\text{Punto inicial:}")
     initial = st.columns(2)
@@ -119,30 +122,31 @@ def penalty():
         )
         # with open(path, 'r') as settings:
         #     data = json.load(settings)
-        data = {}
-        data["Penalty_number_of_sequence"]= seq,
-        data["Penalty_penalty_factor"]= pfactor,
-        data["Penalty_update_factor"]= ufactor,
-        data["Penalty_constraints"]= contrains,
-        data["Penalty_max_or_min"]= minmax,
-        data["Penalty_init_point"]= [x0, y0],
-        data["Penalty_x_range"]= [u0, u1, 1],
-        data["Penalty_y_range"]= [v0, v1, 1],
-        data["Penalty_func"]= form,
-        data["Penalty_vars"]= var_names
-        json_object = json.dumps(data, indent = 4)
-        with open(path, 'w') as settings:
-            settings.write(json_object)
+        if form != '' and len(var_names) != 0:
+            data = {}
+            data["Penalty_number_of_sequence"]= seq,
+            data["Penalty_penalty_factor"]= pfactor,
+            data["Penalty_update_factor"]= ufactor,
+            data["Penalty_constraints"]= contrains,
+            data["Penalty_max_or_min"]= minmax,
+            data["Penalty_init_point"]= [x0, y0],
+            data["Penalty_x_range"]= [u0, u1, 1],
+            data["Penalty_y_range"]= [v0, v1, 1],
+            data["Penalty_func"]= form,
+            data["Penalty_vars"]= var_names
+            json_object = json.dumps(data, indent = 4)
+            with open(path, 'w') as settings:
+                settings.write(json_object)
             
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "ThreeDPenalty_Manim"])
         video_path = "media/videos/Penalty_Manim/480p15/Penalty_Manim_ManimCE_v0.14.0.mp4"
-        # # with open(".temp", "r") as fp:
-        # #     msg = fp.read()
+        # # # with open(".temp", "r") as fp:
+        # # #     msg = fp.read()
 
         
-        # # os.remove(".temp")
-        # # clear the placeholder at the end
+        # # # os.remove(".temp")
+        # # # clear the placeholder at the end
         placeholder.empty()
 
         st.write("Resultado")
