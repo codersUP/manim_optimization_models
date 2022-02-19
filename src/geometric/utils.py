@@ -2,7 +2,6 @@ import json
 from functools import reduce
 import sympy as sym
 from sympy.parsing.sympy_parser import parse_expr, standard_transformations, convert_equals_signs
-import math
 
 def move_inequality_constants(ineq):
     l = ineq.lhs
@@ -150,6 +149,7 @@ def get_cleared_constraint(ineq):
         else:
             a = sym.solve(ineq, x)
             return a.args[0]
+
 #despejar las igualdades
 def get_eq_cleared_constraint(ineq):
     if len(ineq.free_symbols) >= 2:
@@ -187,7 +187,7 @@ def move_inequality_to_max(ineq):
     else: 
         return -1*l <= -1*r
     
-#max_or_min = 0 means doing minimun
+# max_or_min = 0 means doing minimun
 def get_constraints_cleared(ineqs_):
     ineqs = [get_cleared_constraint(ineq) for ineq in ineqs_]
     return ineqs

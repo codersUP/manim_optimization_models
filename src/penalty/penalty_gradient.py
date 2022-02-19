@@ -5,7 +5,7 @@ from .utils import *
 import numpy as np
 
 
-# Devuelve el valor de la función penalizada Φ(x, u) en un punto 
+# It returns the value of the penalised function Φ(x, u) on a point
 
 def penalty_gradient():
     with open('penalty_settings.json') as settings:

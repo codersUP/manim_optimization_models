@@ -2,9 +2,8 @@ from manim import *
 import itertools
 import numpy as np
 from random import choice
-from .utils import GetIntersections, colors#get_intersections_between_two_vmobs
-from .cuttingPlanes import bnSolve, gomoryMixedIntegerCut, liftAndProject
-from .milpInstance import MILPInstance
+from .utils import GetIntersections, colors # get_intersections_between_two_vmobs
+from .cuttingPlanes import bnSolve, gomoryMixedIntegerCut
 from .input_parser import load_cp_model
 
 # cut types

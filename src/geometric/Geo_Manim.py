@@ -1,6 +1,5 @@
 import numpy as np
 from .geometric import geometric_aproach
-# from .utils import *
 import json
 from manim import *
 
