@@ -1,6 +1,7 @@
 import streamlit as st
 from cutting_edge import cutedge
 from geometric import geo
+from ideas_geo import ideasgeo
 from line_search import linesearch
 from penalty import penalty
 from plineal import plineal
@@ -27,7 +28,7 @@ router = [
     simplex,
     cutedge,
     ramac,
-    lambda: None,
+    ideasgeo,
     plineal,
     linesearch,
     penalty,

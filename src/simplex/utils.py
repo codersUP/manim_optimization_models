@@ -1,5 +1,3 @@
-from sympy import sympify
-import numpy as np
 
 # returns whether each element of each list is equal to the other
 def equals(list1, list2):
@@ -11,18 +9,8 @@ def equals(list1, list2):
 
     return True
 
-
-def parseArray(list):
-    if list == "" :
-        return None
-    result = [(float(sympify(x, convert_xor=False, evaluate=True)) if x != "" else None) for x in list]
-    return result
-
-def parseMatrix(matrix):
-    if matrix == "" :
-        return None
-    return [parseArray(row) for row in matrix]
-
+# given a set of data that contains 3 or more variables, 
+# it returns a new set of data reduced to the first two.
 def transform2D(data):
     return {
         "vars_c": transformArray(data["vars_c"]),
