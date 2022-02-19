@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-__pycache__
-media
-=======
-/media
+media/
+__pycache__/
 *.pyc
->>>>>>> 7c591cb397a1a4e39767d89b36341e0d51eef862
+
