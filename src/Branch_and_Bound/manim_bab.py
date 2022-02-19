@@ -1,5 +1,5 @@
 from manim import *
-import bab
+from .bab import branch_and_bound_int, func_eval, parse_expr
 import json
 import numpy as np
 import sympy as sp
@@ -54,17 +54,17 @@ class BAB3D(ThreeDScene):
         if len(vars) != 2:
             raise Exception("the model must have 2 variables")
 
-        m = bab.branch_and_bound_int(**data)
+        m = branch_and_bound_int(**data)
         axes = ThreeDAxes()
         function = Surface(
             lambda u, v: np.array(
                 [
                     u,
                     v,
-                    bab.func_eval(
+                    func_eval(
                         vars,
                         [u, v],
-                        bab.parse_expr(func),
+                        parse_expr(func),
                     ),
                 ]
             ),
@@ -140,7 +140,7 @@ class BAB2D(Scene):
         func_lambda = sp.Lambda(vars, func)
         func_evaluated = lambda x: np.array([func_lambda((x))], dtype=float)
 
-        m = bab.branch_and_bound_int(**data)
+        m = branch_and_bound_int(**data)
 
         axes = Axes(
             x_range=[u_range[0], u_range[1], 1],

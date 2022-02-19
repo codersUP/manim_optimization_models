@@ -18,7 +18,7 @@ def init_state():
 
 
 def plineal():
-    st.title("Introduzca los datos necesarios para su computo")
+    st.title("Introduzca los datos necesarios para su cómputo")
 
     if not "plineal" in st.session_state:
         init_state()
