@@ -3,8 +3,8 @@ import itertools
 import numpy as np
 from random import choice
 from utils import GetIntersections, colors#get_intersections_between_two_vmobs
-import coinor.cuppy.cuttingPlanes as cp
-from coinor.cuppy.milpInstance import MILPInstance
+import cuttingPlanes as cp
+from milpInstance import MILPInstance
 from input_parser import load_cp_model
 
 # cut types

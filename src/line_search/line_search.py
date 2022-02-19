@@ -3,7 +3,6 @@ import numpy as np
 from scipy.optimize import line_search
 import json
 import sympy
-from input_parser import load_model
 
 class ThreeDCanvas(ThreeDScene):
   def construct(self):
@@ -20,8 +19,8 @@ class ThreeDCanvas(ThreeDScene):
       raise Exception("You must specify the range of coordinates, i.e x_range = [-4,4], y_range = [0,10]")
 
     try:
-      camera_phi = model_json['phi']
-      camera_theta = model_json['theta']
+      camera_phi = model_json['camera_phi']
+      camera_theta = model_json['camera_theta']
     except:
       camera_phi = 45
       camera_theta = -120
@@ -49,7 +48,7 @@ class ThreeDCanvas(ThreeDScene):
 
 
     self.set_camera_orientation(phi=camera_phi * DEGREES, theta= camera_theta * DEGREES)
-    self.begin_ambient_camera_rotation(rate=0.1)
+    self.begin_ambient_camera_rotation(rate=0.2)
 
     self.play(Rotate(graph, 0*DEGREES))
     self.play(Rotate(axes, 0*DEGREES))
