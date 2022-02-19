@@ -1,6 +1,5 @@
-## Penalty Function method.
+## Penalty Function method using gradient.
 ## Loading the libraries.
-from scipy.optimize import line_search
 from gradient import gradient
 from utils import *
 import numpy as np
@@ -8,7 +7,6 @@ import numpy as np
 
 # Devuelve el valor de la función penalizada Φ(x, u) en un punto 
 
-# minimize = 0, maximize = 1
 def penalty_gradient():
     with open('penalty_settings.json') as settings:
         data = json.load(settings)
@@ -41,11 +39,13 @@ def penalty_gradient():
         for k in range(numseq):
             print('\n')
             print('sequence number ', k)
+            # gets the function, penalty_ function in sympy and the lambda of the penalty function
             _, func,  penalty_func, penalty_lambda, _, _ = get_penalty_func(function, constraints, variables, r, min_or_max)
-    
+            # gets the current point value in penalty function
             sum_ = penalty_lambda(*x_ip)
             print('current function value is ', sum_)
             x_1 = np.copy(x_ip)
+            # get new approximation point
             m = gradient(variables, str(penalty_func), x_ip)
             sol = m["min"]
             x_ip = np.copy(x_1)
@@ -63,11 +63,12 @@ def penalty_gradient():
                 
             sol_points.append(sol_)
             r*= c
-            
+            # verify stop case
             if track <= 0.001:
                 break
             
         sol_.append(func_eval(variables, sol_, func))
+        # save info
         dic = {
             func_key_name:	{
 				'iterations': k,
@@ -78,6 +79,7 @@ def penalty_gradient():
         save_process(dic)
         return dic
     else:
+        # in case already have been done
         dic = load_saved_data(func_key_name)
         print('\n')
         print('sequence number ', dic['iterations'])

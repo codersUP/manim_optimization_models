@@ -1,4 +1,4 @@
-## Penalty Function method.
+## Penalty Function method with newton.
 ## Loading the libraries.
 from scipy.optimize import line_search
 from newton import newton

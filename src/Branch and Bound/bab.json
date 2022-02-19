@@ -1,0 +1,9 @@
+{
+  "vars": ["x", "y"],
+  "func": "- (7 * x * y / 2.71828 ** ( x ** 2 + y ** 2))",
+  "constraints": ["x >= -2", "y >= -2", "x <= 2", "y <= 2"],
+  "initial_point": [1, 1],
+  "u_range": [-5, 5],
+  "v_range": [-5, 5],
+  "stroke_width": 0.5
+}
