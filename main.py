@@ -5,6 +5,7 @@ from src.line_search.line_search import ThreeDCanvas as lineSearch
 # from src.cutting_planes.gomory_cutting_planes import Canvas as cuttingPlanes
 from src.Numerical_Optimization.manim_numerical_optimization import NO3D, NO2D
 from src.Branch_and_Bound.manim_bab import BAB3D, BAB2D
+from src.geom_ideas.simplexEx import SimplexExample as SE
 
 class TwoDSimplex(X): pass
 class ThreeDSimplex(Y): pass
@@ -16,3 +17,6 @@ class ThreeDNO(NO3D):pass
 class TwoDNO(NO2D):pass
 class ThreeDBAB(BAB3D):pass
 class TwoDBAB(BAB2D):pass
+
+class GeoSimplex(SE): pass
+
