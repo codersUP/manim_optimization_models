@@ -46,7 +46,10 @@ def geo():
         for i, section in enumerate(var_sections):
             with section:
                 st.latex(r"r_{%d}\\[-100pt]" % (i))
-                contrains.append(st.text_input("", key=f"key_r{i}", value=st.session_state.example[i]))
+                try:
+                    contrains.append(st.text_input("", key=f"key_r{i}", value=st.session_state.example[i]))
+                except Exception as e:
+                    contrains.append(st.text_input("", key=f"key_r{i}"))
 
 
     run = st.button("Computar")
@@ -56,14 +59,16 @@ def geo():
         path = os.path.abspath(
             os.path.join(__file__, "../../src/Geometric/geometric_aproach.json")
         )
-        with open(path, 'r') as settings:
-            data = json.load(settings)
-        data["func"] = form
-        data["constraints"] = contrains
+        if form != '':
+            
+            with open(path, 'r') as settings:
+                data = json.load(settings)
+            data["func"] = form
+            data["constraints"] = contrains
         
-        json_object = json.dumps(data, indent = 4)
-        with open(path, 'w') as settings:
-            settings.write(json_object)
+            json_object = json.dumps(data, indent = 4)
+            with open(path, 'w') as settings:
+                settings.write(json_object)
             
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "TwoDGeo_Manim"])
