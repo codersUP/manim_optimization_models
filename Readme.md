@@ -33,7 +33,7 @@ Luego el proceso para graficar con Manim se encuentra en el archivo **Geo_Manim.
 
 Por último, los detalles como la función y las restricciones se almacenan en un archivo **geometric_aproach.json** el cual se utiliza como configuración del problema a resolver.
 
-Luego el proceso para graficar com Manim se encuentra en el archivo **Geo_Manim.py** donde primero se realiza el llamado a **geometric_aproach** para obtener todos los datos necesarios y luego se procede a graficar en orden las líneas, puntos de intersección, el polígono asociado a estos puntos y por último los puntos de máximo y mínimo.
+Luego el proceso para graficar con Manim se encuentra en el archivo **Geo_Manim.py** donde primero se realiza el llamado a **geometric_aproach** para obtener todos los datos necesarios y luego se procede a graficar en orden las líneas, puntos de intersección, el polígono asociado a estos puntos y por último los puntos de máximo y mínimo.
 
 Por último, los detalles como la función y las restricciones se almacenan en un archivo **geometric_aproach.json** el cual se utiliza como configuración del problema a resolver.
 
@@ -312,9 +312,9 @@ Dado un problema lineal de optimización con restricciones, el método construct
 }
 ```
 
-Se deben especificar las variables a usar, así como las restricciones con signo <=, la función a optimizar debe estar escrita en términos que permitan minimizarla, es decir, se debe utilizar el opuesto de los coeficientes si se desea hallar el máximo. Además deben proveerse la matriz A, y vectores b,c, de manera tal que el problema sea expresado como $$\min{ca} ~~\text{tal que}~~ Ax \leq b$$.
+Se deben especificar las variables a usar, así como las restricciones con signo <=, la función a optimizar debe estar escrita en términos que permitan minimizarla, es decir, se debe utilizar el opuesto de los coeficientes si se desea hallar el máximo. Además, deben proveerse la matriz A, y vectores b,c, de manera tal que el problema sea expresado como $$\min{ca} ~~\text{tal que}~~ Ax \leq b$$.
 
-Primeramente se cargan de entrada en el método **load_cp_model** del módulo **input_parser**, el cual recibe como parámetro la ubicación del archivo que contiene los datos, en este caso, por defecto se hará:
+Primeramente, se cargan de entrada en el método **load_cp_model** del módulo **input_parser**, el cual recibe como parámetro la ubicación del archivo que contiene los datos, en este caso, por defecto se hará:
 
  load_cp_model('./src/cutting_planes/model_cp.json')
 
@@ -356,6 +356,6 @@ Se deben especificar las variables a usar, así como las restricciones con signo
 
 
 
-Primeramente se  procesarán los datos del problema especificados en el archivo de input, el cual por defecto será /src/line_search/model_ls.json. Se creará un objeto de tipo Surface para graficar la función principal con los valores de x_range y y_range dados. Además se colocará la cámara en el ángulo especificado, y se hará rotar a la misma con respecto a la escena, debido a que en ocasiones la complejidad de las funciones con las que se trabaja hará muy tedioso el proceso de ajustar la cámara a un ángulo específico para observar los puntos óptimos computados.
+Primeramente se  procesarán los datos del problema especificados en el archivo de input, el cual por defecto será /src/line_search/model_ls.json. Se creará un objeto de tipo Surface para graficar la función principal con los valores de x_range y y_range dados. Además, se colocará la cámara en el ángulo especificado, y se hará rotar a la misma con respecto a la escena, debido a que en ocasiones la complejidad de las funciones con las que se trabaja hará muy tedioso el proceso de ajustar la cámara a un ángulo específico para observar los puntos óptimos computados.
 
 Para hallar el valor óptimo mediante la estrategia de búsqueda en la línea utilizamos como dirección de descenso siempre el opuesto al gradiente de la función evaluada en el punto inicial, llamémosle a este valor $D$. Luego utilizando la función scipy.line_search, calculamos el valor de $\alpha$ óptimo por el cual debemos multiplicar el opuesto del gradiente, y posteriormente nos movemos en esa dirección p*alpha unidades, de manera que si el punto del q partimos es $p_0$, avanzaríamos hasta $p_1=p_0+\alpha D$. Si el punto que obtenemos siguiendo esta idea cumple con todas las restricciones del problema, si no se detecta un descenso infinito, y si la diferencia entre el k-ésimo punto y el k+1-ésimo punto computado es mayor que cierta tolerancia, actualizamos el valor del gradiente que utilizaremos para la siguiente iteración, y seguimos el ciclo en la línea 78, en caso contrario, graficamos los puntos obtenidos luego de obtener sus coordenadas con respecto al eje de coordenadas de tres dimensiones que utilizamos como punto de referencia para la escena.
