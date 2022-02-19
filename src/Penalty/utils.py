@@ -8,8 +8,6 @@ def move_inequality_constants(ineq):
     r = ineq.rhs
     op = ineq.rel_op    
     
-    #revisar como es para minimo
-    # if op.__contains__('<'):
     if op.__contains__('>'):
         return l - r
     else: 
@@ -23,7 +21,6 @@ def func_eval(x_vector, value_vector, func):
 
 def get_lambda(x_vector, f):
     return sym.Lambda(('x', 'y'), f)
-    # return sym.Lambda(x_vector, f)
 
 def get_constraints(constraints):
     result = list()
@@ -178,10 +175,9 @@ def move_inequality_to_max(ineq):
         return ineq
     else: 
         return -1*l <= -1*r
-#max_or_min = 0 means doing minimun
+    
 def get_constraints_cleared(ineqs_, max_or_min=0):
     ineqs = [get_cleared_constraint(ineq) for ineq in ineqs_]
-    # ineqs = [move_inequality_to_min(i) if max_or_min == 0 else move_inequality_to_max(i) for i in ineqs]
     return ineqs
 def get_lambdas(ineqs):
     lam = []
@@ -226,32 +222,7 @@ def check_eq_constraint_point(x_, y_, lambdas_):
         if _y != y_:
             return False
     return True
-# ineqs = []
-# ineqs.append(parse_expr('20*x+50*y <= 3000'))
-# ineqs.append(parse_expr('x+y <= 90'))
-# ineqs.append(parse_expr('y >= 10'))
-# ineqs.append(parse_expr('y >= 0'))
-# ineqs.append(parse_expr('x >= 0'))
-# ineqs.append(parse_expr('10000*x+6000*y >= z'))
-# converted = get_min_constraints_cleared(ineqs)
 
-# a = 0
-
-# def move_inequality_constants(ineq):
-#     l = ineq.lhs
-#     r = ineq.rhs
-#     op = ineq.rel_op
-
-#     if op == "<=":
-#         return sym.GreaterThan(r - l, 0)
-#     elif op == "<":
-#         return sym.StrictGreaterThan(r - l, 0)
-#     elif op == ">=":
-#         return sym.GreaterThan(l - r, 0)
-#     elif op == ">":
-#         return sym.StrictGreaterThan(l - r, 0)
-#     elif op == "=":
-#         return sym.Eq(l - r, 0)
 ################## geometric ###################
 def get_geometric_ineqs_and_eqs(constraints):
     ineqs = []
