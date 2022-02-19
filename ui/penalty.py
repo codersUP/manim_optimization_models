@@ -35,7 +35,6 @@ def penalty():
     with sz:
         st.number_input(
             "Cantidad de variables", 
-            value=st.session_state.variables_size, 
             key="variables_size",
             min_value=2, 
             max_value=3, 

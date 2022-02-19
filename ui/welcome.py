@@ -13,8 +13,8 @@ def welcome():
         st.markdown("- Enrique Martínez González")
 
     with col2:
-        st.markdown("- Andy")
-        st.markdown("- Richard")
+        st.markdown("- Andy A. Castañeda Guerra")
+        st.markdown("- Richard García De la Osa")
 
     st.markdown(
         "## Para comenzar seleccione que programa desea ejecutar en el menú lateral 👈"

@@ -1,6 +1,24 @@
 ### Informe para el usuario:
 
-Este sería un ejemplo de como ejecutar el programa, el flag **-ql** es para la calidad, la **l** significa low, existen otros como **m**, **h**, **k** los cuales corresponden a medium, high y 4k respectivamente. Se debe tener cuidado al usar estos por el consumo de CPU. También podemos añadirle **-p** al flag anterior quedando **-pql** para que al terminar de ejecutar el programa muestre el resultado en un video. Los demás parámetros deben ser el nombre del .py a ejecutar y el nombre de la clase que implementa las clases de Manim. El flag --format=gif es usado para que el archivo que retorne sea en formato gif y no un video.
+Para iniciar la aplicación debe ejecutar la siguiente linea de codigo en una consola
+
+![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-18-50.png)
+
+Este sería el menú principal de nuestra aplicación. En este damos a conocer los datos de los integrantes del equipo y del proyecto en general, así como las opciones del programa a la izquierda. 
+
+![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-13-32.png)
+
+A continuación mostramos un ejemplo predeterminado para el problema de la solución geométrica. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutar este. 
+
+![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-13-53.png)
+
+A continuación mostramos un ejemplo predeterminado para el problema de Penalización. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutarlo. 
+
+![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-15-47.png)
+
+![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-16-01.png)
+
+Este sería un ejemplo de como ejecutar el programa en Manim, el flag **-ql** es para la calidad, la **l** significa low, existen otros como **m**, **h**, **k** los cuales corresponden a medium, high y 4k respectivamente. Se debe tener cuidado al usar estos por el consumo de CPU. También podemos añadirle **-p** al flag anterior quedando **-pql** para que al terminar de ejecutar el programa muestre el resultado en un video. Los demás parámetros deben ser el nombre del .py a ejecutar y el nombre de la clase que implementa las clases de Manim. El flag --format=gif es usado para que el archivo que retorne sea en formato gif y no un video.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 18-04-38.png)
 
@@ -12,11 +30,11 @@ Cuando llegue aquí ya terminó el proceso y muestra el path donde se encuentra 
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-38-00.png)
 
-Esta sería la configuración del **penalty_settings.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los otros parámetros son más específicos del método de penalización, la cantidad de iteraciones como caso de parada, el coeficiente de penalización, el valor para aumentar este, los rangos de x y las y.
+Esta sería la configuración del **penalty_settings.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los otros parámetros son más específicos del método de penalización, la cantidad de iteraciones como caso de parada, el coeficiente de penalización, el valor para aumentar este, los rangos de x y las y. Los valores del mismo se llenan a traves de la aplicación antes de ejecutar este algoritmo.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-47-22.png)
 
-Esta sería la configuración del **geometric_aproach.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings.
+Esta sería la configuración del **geometric_aproach.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los valores del mismo se llenan a traves de la aplicación antes de ejecutar este algoritmo al igual que el anterior.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-47-32.png)
 
