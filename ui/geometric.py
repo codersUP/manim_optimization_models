@@ -18,7 +18,7 @@ def init_state():
 
 
 def geo():
-    st.title("Introduzca los datos necesarios para su computo")
+    st.title("Introduzca los datos necesarios para su cómputo")
 
     if not "geo" in st.session_state:
         init_state()

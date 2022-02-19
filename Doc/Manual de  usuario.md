@@ -1,6 +1,6 @@
 ### Informe para el usuario:
 
-Para iniciar la aplicación debe ejecutar la siguiente linea de codigo en una consola
+Para iniciar la aplicación debe ejecutar la siguiente línea de código en una consola.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-18-50.png)
 
@@ -30,11 +30,11 @@ Cuando llegue aquí ya terminó el proceso y muestra el path donde se encuentra 
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-38-00.png)
 
-Esta sería la configuración del **penalty_settings.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los otros parámetros son más específicos del método de penalización, la cantidad de iteraciones como caso de parada, el coeficiente de penalización, el valor para aumentar este, los rangos de x y las y. Los valores del mismo se llenan a traves de la aplicación antes de ejecutar este algoritmo.
+Esta sería la configuración del **penalty_settings.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los otros parámetros son más específicos del método de penalización, la cantidad de iteraciones como caso de parada, el coeficiente de penalización, el valor para aumentar este, los rangos de x y las y. Los valores del mismo se llenan a través de la aplicación antes de ejecutar este algoritmo.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-47-22.png)
 
-Esta sería la configuración del **geometric_aproach.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los valores del mismo se llenan a traves de la aplicación antes de ejecutar este algoritmo al igual que el anterior.
+Esta sería la configuración del **geometric_aproach.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los valores del mismo se llenan a través de la aplicación antes de ejecutar este algoritmo al igual que el anterior.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-47-32.png)
 

@@ -39,7 +39,7 @@ def penalty():
             min_value=2, 
             max_value=3, 
             step=1, 
-            help="varaiables de su ecuación no lineal"
+            help="variables de su ecuación no lineal"
         )
 
         var_names = [section.text_input("", key=f"x{i}", value=st.session_state.variables[i]) for i, section in enumerate(var_sections)]
@@ -98,13 +98,13 @@ def penalty():
     )
 
     pfactor = cols[2].number_input(
-        "Factor de penalizacion",
+        "Factor de penalización",
         key="pfactor",
         help="Valor del factor de penalización",
     )
 
     seq = cols[3].number_input(
-        "Numero de sequencia",
+        "Número de sequencia",
         step=1,
         key="seq",
         help="Cantidad de iteraciones máximas que se desean realizar para obtener una aproximación del mínimo valor",
