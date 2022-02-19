@@ -41,10 +41,9 @@ def callback():
 
 def sidebar():
     with st.sidebar:
-        st.header("Que desea computar?")
+        st.header("Qué desea computar?")
         opt = st.radio("", options, on_change=callback)
 
         idx = options.index(opt)
 
         return router[idx]
-
