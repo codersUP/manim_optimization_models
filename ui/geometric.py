@@ -1,5 +1,4 @@
 import streamlit as st
-import sys
 import os
 import json
 import subprocess
@@ -8,13 +7,12 @@ def init_state():
     # required for preparing context switching
     st.session_state.current = 'geo'
     st.session_state.geo = True
-    st.session_state.form = "10000*x + 6000*y"
-    st.session_state.example = ["20*x+50*y <= 3000", "x+y <= 90", "y >= 10", "y >= 0", "x >= 0"]
-    st.session_state.contr_cant = 5
-    
     ##########################################
 
     # Variable initializations
+    st.session_state.form = "10000*x + 6000*y"
+    st.session_state.example = ["20*x+50*y <= 3000", "x+y <= 90", "y >= 10", "y >= 0", "x >= 0"]
+    st.session_state.contr_cant = 5
 
 
 def geo():
@@ -31,11 +29,11 @@ def geo():
     )
 
     contr_cant = st.number_input(
-        "Cantidad de condiciones", 
+        "Cantidad de restricciones", 
         value=st.session_state.contr_cant, 
         min_value=0, 
         step=1, 
-        help="condiciones que cumple su ecuación no lineal"
+        help="restricciones que cumple su problema lineal"
     )
 
     contrains = []
@@ -72,37 +70,9 @@ def geo():
             
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "TwoDGeo_Manim"])
-        video_path = "media/videos/Geo_Manim/480p15/Geo_Manim_ManimCE_v0.14.0.mp4"
-        # # with open(".temp", "r") as fp:
-        # #     msg = fp.read()
-
-        
-        # # os.remove(".temp")
-        # # clear the placeholder at the end
-        placeholder.empty()
-
-        # st.write("Proyección sobre el plano XY")
-        st.video(video_path)
-        # st.write(msg)
-
-        # if not video_path2 is None:
-        #     st.write("Superficie tridimensional")
-        #     st.video(video_path2)
-        # {
-        # "func": "10000*x + 6000*y",
-        # "constraints": ["20*x+50*y <= 3000", "x+y <= 90", "y >= 10", "y >= 0", "x >= 0"]
-        # }
-
-        # <some logic here to run the code HERE>
-        # variables are
-        # var_names: Nombre de las variables
-        # form: Formula
-        # contrains: Condiciones de la formula
-        # x0, y0: Punto inicial
-        # u0, u1: Rango a graficar en las X
-        # v0, v1: Rango a graficar en las Y
-        # stroke: Stroke
-        # cycles: Los ciclos :-P
+        video_path = "media/videos/main/480p15/TwoDGeo_Manim.mp4"
         
         # clear the placeholder at the end
         placeholder.empty()
+
+        st.video(video_path)

@@ -3,7 +3,7 @@ import os
 import numpy as np
 
 from scipy.optimize import linprog
-from .utils import parseArray, parseMatrix, message
+from .utils import message
 
 
 def simplex_algorithm(data):
