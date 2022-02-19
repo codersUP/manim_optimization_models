@@ -3,40 +3,43 @@ from functools import reduce
 import sympy as sym
 from sympy.parsing.sympy_parser import parse_expr, standard_transformations, convert_equals_signs
 import math
+
 def move_inequality_constants(ineq):
     l = ineq.lhs
     r = ineq.rhs
     op = ineq.rel_op    
     
-    #revisar como es para minimo
-    # if op.__contains__('<'):
     if op.__contains__('>'):
         return l - r
     else: 
         return r - l
     
+# evaluar una funcion de sympy
 def func_eval(x_vector, value_vector, func):
     f = func
     for x_i, v_i in zip(x_vector, value_vector):
         f = f.subs(x_i, v_i)
     return f
 
+# convertir a lambda una funcion de sympy
 def get_lambda(x_vector, f):
     return sym.Lambda(('x', 'y'), f)
-    # return sym.Lambda(x_vector, f)
 
+# convertir las restricciones 
 def get_constraints(constraints):
     result = list()
     for c in constraints:
         result.append((move_inequality_constants(parse_expr(c))))
     return result
 
+# evaluar las restricciones en un vector x
 def get_evaluated_constraints(variables, values, constraints):
     result = list()
     for con in constraints:
         result.append(func_eval(variables, values, con))
     return result
 
+# extraer del json los valores deseados de la funcion las variables y las restricciones
 def read_json(path):
     with open(path) as settings:
         data = json.load(settings)
@@ -53,6 +56,7 @@ def read_json(path):
 def convert_list_to_tuples(list):
     return reduce(lambda a, b: a + (b,), list, ())
 
+# guardar el resultado
 def save_process(my_dict):
     with open('data.json', 'r') as fp1:
         data = json.load(fp1)
@@ -61,6 +65,7 @@ def save_process(my_dict):
     with open('data.json', 'w') as fp:
         json.dump(data, fp)
 
+# cargar el resultado
 def load_saved_data(key):
     with open('data.json', 'r') as fp:
         data = json.load(fp)
@@ -129,6 +134,7 @@ y = sym.Symbol('y')
     
 # x**2 = 4 => x = log4_2
 
+# despejar las inecuaciones
 def get_cleared_constraint(ineq):
     if len(ineq.free_symbols) >= 2:
         if ineq.free_symbols.__contains__(y):
@@ -144,6 +150,7 @@ def get_cleared_constraint(ineq):
         else:
             a = sym.solve(ineq, x)
             return a.args[0]
+#despejar las igualdades
 def get_eq_cleared_constraint(ineq):
     if len(ineq.free_symbols) >= 2:
         if ineq.free_symbols.__contains__(y):
@@ -160,6 +167,7 @@ def get_eq_cleared_constraint(ineq):
             a = sym.solve(ineq, x)
             return a[0], x
 
+# convertir en ecuacion para minimo
 def move_inequality_to_min(ineq):
     l = ineq.lhs
     r = ineq.rhs
@@ -178,11 +186,13 @@ def move_inequality_to_max(ineq):
         return ineq
     else: 
         return -1*l <= -1*r
+    
 #max_or_min = 0 means doing minimun
-def get_constraints_cleared(ineqs_, max_or_min=0):
+def get_constraints_cleared(ineqs_):
     ineqs = [get_cleared_constraint(ineq) for ineq in ineqs_]
-    # ineqs = [move_inequality_to_min(i) if max_or_min == 0 else move_inequality_to_max(i) for i in ineqs]
     return ineqs
+
+# sacar el lambda teniendo en cuenta si es por x o por y
 def get_lambdas(ineqs):
     lam = []
     for i in ineqs:
@@ -200,6 +210,7 @@ def get_lambdas(ineqs):
             syms = [s for s in l.free_symbols]
             lam.append(sym.Lambda(syms, l))
     return lam
+
 def get_eq(ineqs):
     lam = []
     for i in ineqs:
@@ -211,6 +222,7 @@ def get_eq(ineqs):
             lam.append(l)
     return lam
 
+# verificar que se cumplan las restricciones
 def check_constraint_point(x_, y_, constraints_, lambdas_):
     for c, l in zip(constraints_,lambdas_):
         op = c[1]
@@ -220,38 +232,15 @@ def check_constraint_point(x_, y_, constraints_, lambdas_):
         elif op.__contains__('<') and y_ > _y:
             return False
     return True
+    
+# verificar que se cumplan las restricciones
 def check_eq_constraint_point(x_, y_, lambdas_):
     for l in lambdas_:
         _y = l(x_)
         if _y != y_:
             return False
     return True
-# ineqs = []
-# ineqs.append(parse_expr('20*x+50*y <= 3000'))
-# ineqs.append(parse_expr('x+y <= 90'))
-# ineqs.append(parse_expr('y >= 10'))
-# ineqs.append(parse_expr('y >= 0'))
-# ineqs.append(parse_expr('x >= 0'))
-# ineqs.append(parse_expr('10000*x+6000*y >= z'))
-# converted = get_min_constraints_cleared(ineqs)
 
-# a = 0
-
-# def move_inequality_constants(ineq):
-#     l = ineq.lhs
-#     r = ineq.rhs
-#     op = ineq.rel_op
-
-#     if op == "<=":
-#         return sym.GreaterThan(r - l, 0)
-#     elif op == "<":
-#         return sym.StrictGreaterThan(r - l, 0)
-#     elif op == ">=":
-#         return sym.GreaterThan(l - r, 0)
-#     elif op == ">":
-#         return sym.StrictGreaterThan(l - r, 0)
-#     elif op == "=":
-#         return sym.Eq(l - r, 0)
 ################## geometric ###################
 def get_geometric_ineqs_and_eqs(constraints):
     ineqs = []
@@ -384,6 +373,7 @@ def get_penalty_func(func, constraints, variables, step, max_or_min = 0):
     else: # maximize
         return ineqs, *get_penalty_func_maximize(func, ineqs, eqs, variables, step)
 
+# para organizar la información de los puntos en una funcion ya calculada y guardada
 def read_dots_from_json(string_):
     dots = []
     splited_text = (string_[2:len(string_)-2].split('['))
