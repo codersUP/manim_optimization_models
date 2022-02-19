@@ -25,7 +25,7 @@ def init_state():
     st.session_state.example = ["x>=0", "y>=0", "(x-5)**2 + y**2 - 26 >= 0"]
 
 def penalty():
-    st.title("Introduzca los datos necesarios para su computo")
+    st.title("Introduzca los datos necesarios para su cómputo")
 
     if not "penalty" in st.session_state:
         init_state()
@@ -88,27 +88,23 @@ def penalty():
 
     minmax = cols[0].number_input(
         "Mínimo o máximo",
-        value=st.session_state.minmax,
         key="minmax",
     )
 
     ufactor = cols[1].number_input(
         "Factor de actualización",
-        value=st.session_state.ufactor,
         key="ufactor",
         help="Valor del factor de actualización",
     )
 
     pfactor = cols[2].number_input(
         "Factor de penalizacion",
-        value=st.session_state.pfactor,
         key="pfactor",
         help="Valor del factor de penalización",
     )
 
     seq = cols[3].number_input(
         "Numero de sequencia",
-        value=st.session_state.seq,
         step=1,
         key="seq",
         help="Cantidad de iteraciones máximas que se desean realizar para obtener una aproximación del mínimo valor",
@@ -119,7 +115,7 @@ def penalty():
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
         path = os.path.abspath(
-            os.path.join(__file__, "../../src/Geometric/geometric_aproach.json")
+            os.path.join(__file__, "../../src/Penalty/penalty_settings.json")
         )
         # with open(path, 'r') as settings:
         #     data = json.load(settings)

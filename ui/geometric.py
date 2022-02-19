@@ -8,9 +8,9 @@ def init_state():
     # required for preparing context switching
     st.session_state.current = 'geo'
     st.session_state.geo = True
-    st.session_state.form = "(x**2 + y - 11)+(x + y**2 - 7)**2"
+    st.session_state.form = "10000*x + 6000*y"
     st.session_state.example = ["20*x+50*y <= 3000", "x+y <= 90", "y >= 10", "y >= 0", "x >= 0"]
-    st.session_state.contr_cant = 4
+    st.session_state.contr_cant = 5
     
     ##########################################
 
@@ -61,8 +61,9 @@ def geo():
         data["func"] = form
         data["constraints"] = contrains
         
+        json_object = json.dumps(data, indent = 4)
         with open(path, 'w') as settings:
-            settings.write(data)
+            settings.write(json_object)
             
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "TwoDGeo_Manim"])
