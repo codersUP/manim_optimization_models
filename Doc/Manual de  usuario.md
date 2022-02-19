@@ -8,7 +8,7 @@ Un ejemplo del proceso del programa.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-37-20.png)
 
-Cuando llegue aqui ya terminó el proceso y muestra el path donde se encuentra el archivo.
+Cuando llegue aquí ya terminó el proceso y muestra el path donde se encuentra el archivo.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-38-00.png)
 
@@ -70,13 +70,13 @@ Este json anterior nos daría como resultado una animación como se muestra en l
 
 ![drag-gif](./imagenes utilizadas/bab3d.jpg)
 
-En cambio si lo modificamos para que solo posea una sola variable obtendremos algo como el siguiente ejemplo:
+En cambio si lo modificamos para que posea una sola variable obtendremos algo como el siguiente ejemplo:
 
 ![drag-gif](./imagenes utilizadas/bab2d.jpg)
 
 ### Métodos numéricos para la optimización no lineal
 
-Para realizar una animación del Método del gradiente, Métodos del gradiente conjugado y el Método de Newton se debe definir un json con el nombre `numerical_optimization.json` que posea la siguiente estructura:
+Para realizar una animación del Método del gradiente, Método del gradiente conjugado y el Método de Newton se debe definir un json con el nombre `numerical_optimization.json` que posea la siguiente estructura:
 
     {
         "vars": vars,
@@ -113,6 +113,6 @@ Este json anterior nos daría como resultado una animación como se muestra en l
 
 ![drag-gif](./imagenes utilizadas/no3d.jpg)
 
-En cambio si lo modificamos para que solo posea una sola variable obtendremos algo como el siguiente ejemplo:
+En cambio si lo modificamos para que posea una sola variable obtendremos algo como el siguiente ejemplo:
 
 ![drag-gif](./imagenes utilizadas/no2d.jpg)
