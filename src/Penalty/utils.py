@@ -1,8 +1,8 @@
 import json
 from functools import reduce
 import sympy as sym
+import os
 from sympy.parsing.sympy_parser import parse_expr, standard_transformations, convert_equals_signs
-import math
 def move_inequality_constants(ineq):
     l = ineq.lhs
     r = ineq.rhs
@@ -51,15 +51,18 @@ def convert_list_to_tuples(list):
     return reduce(lambda a, b: a + (b,), list, ())
 
 def save_process(my_dict):
-    with open('data.json', 'r') as fp1:
+    
+    inputPath = os.path.abspath(os.path.join(__file__, "../data.json"))
+    with open(inputPath, 'r') as fp1:
         data = json.load(fp1)
     for key in my_dict.keys():
         data[key] = my_dict[key]
-    with open('data.json', 'w') as fp:
+    with open(inputPath, 'w') as fp:
         json.dump(data, fp)
 
-def load_saved_data(key):
-    with open('data.json', 'r') as fp:
+def load_saved_data(key):   
+    inputPath = os.path.abspath(os.path.join(__file__, "../data.json"))
+    with open(inputPath, 'r') as fp:
         data = json.load(fp)
     try:
         return data[key]

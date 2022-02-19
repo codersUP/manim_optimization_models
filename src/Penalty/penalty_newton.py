@@ -1,16 +1,17 @@
 ## Penalty Function method with newton.
 ## Loading the libraries.
-from scipy.optimize import line_search
-from newton import newton
-from utils import *
+from .newton import newton
+from .utils import *
 import numpy as np
+import os
 
 
 # Devuelve el valor de la función penalizada Φ(x, u) en un punto 
 
 # minimize = 0, maximize = 1
 def penalty_newton():
-    with open('penalty_settings.json') as settings:
+    inputPath = os.path.abspath(os.path.join(__file__, "../penalty_settings.json"))
+    with open(inputPath) as settings:
         data = json.load(settings)
     numseq      = data['Penalty_number_of_sequence']
     r           = data['Penalty_penalty_factor']

@@ -1,7 +1,7 @@
 ## Penalty Function method.
 ## Loading the libraries.
 import numpy as np
-from utils import *
+from .utils import *
 
 sol_points = []
 eps = 0.000001  #Global Var.

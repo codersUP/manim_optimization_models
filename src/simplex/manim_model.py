@@ -1,5 +1,5 @@
 from manim import *
-from scipy.optimize._optimize import OptimizeResult
+# from scipy.optimize._optimize import OptimizeResult
 from .simplex_method import *
 from .utils import equals, transform2D
 

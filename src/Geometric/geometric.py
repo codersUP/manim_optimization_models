@@ -2,7 +2,7 @@ import numpy as np
 from shapely.geometry import LineString
 from sympy.parsing.sympy_parser import parse_expr
 import sympy as sym
-from utils import *
+from .utils import *
 
 def geometric_aproach(ineqs, equation, x1, y1):
     # convert equation to sympy equation

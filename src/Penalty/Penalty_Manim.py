@@ -1,32 +1,56 @@
 from manim import *
-from utils import *
+from .utils import *
 import numpy as np
-from penalty_newton import penalty_newton
+from .penalty_newton import penalty_newton
 
-with open('penalty_settings.json') as settings:
-    data = json.load(settings)
+# inputPath = os.path.abspath(os.path.join(__file__, "../penalty_settings.json"))
+# with open(inputPath) as settings:
+#     data = json.load(settings)
 
-_dict = penalty_newton()
-variables, function, constraints = read_json('penalty_settings.json')
-lam = sym.Lambda(convert_list_to_tuples(variables), function)
-restrictions_lambdas = [sym.Lambda(convert_list_to_tuples(variables), con) for con in constraints]
-path_dots = read_dots_from_json(_dict["points"])
-p_dots = []
-for (x_, y_) in path_dots:
-    p_dots.append([x_, y_, lam(x_, y_)])
+# _dict = penalty_newton()
+# variables, function, constraints = read_json(inputPath)
+# lam = sym.Lambda(convert_list_to_tuples(variables), function)
+# restrictions_lambdas = [sym.Lambda(convert_list_to_tuples(variables), con) for con in constraints]
+# path_dots = read_dots_from_json(_dict["points"])
+# p_dots = []
+# for (x_, y_) in path_dots:
+#     p_dots.append([x_, y_, lam(x_, y_)])
 
 
-a = 0
-x1 = np.arange(-100, 150, 10)
-y1 = np.arange(-100, 150, 10)
+# a = 0
+# x1 = np.arange(-100, 150, 10)
+# y1 = np.arange(-100, 150, 10)
 
-try:
-    x_range = data['Penalty_x_range']
-    y_range = data['Penalty_y_range']
-except:
-    raise Exception("You must specify the range of coordinates, i.e x_range = [-4,4], y_range = [0,10]")
+# try:
+#     x_range = data['Penalty_x_range']
+#     y_range = data['Penalty_y_range']
+# except:
+#     raise Exception("You must specify the range of coordinates, i.e x_range = [-4,4], y_range = [0,10]")
 class Penalty(ThreeDScene):
     def construct(self):
+        inputPath = os.path.abspath(os.path.join(__file__, "../penalty_settings.json"))
+        with open(inputPath) as settings:
+            data = json.load(settings)
+        
+        _dict = penalty_newton()
+        variables, function, constraints = read_json(inputPath)
+        lam = sym.Lambda(convert_list_to_tuples(variables), function)
+        restrictions_lambdas = [sym.Lambda(convert_list_to_tuples(variables), con) for con in constraints]
+        path_dots = read_dots_from_json(_dict["points"])
+        p_dots = []
+        for (x_, y_) in path_dots:
+            p_dots.append([x_, y_, lam(x_, y_)])
+        
+        
+        a = 0
+        x1 = np.arange(-100, 150, 10)
+        y1 = np.arange(-100, 150, 10)
+        
+        try:
+            x_range = data['Penalty_x_range']
+            y_range = data['Penalty_y_range']
+        except:
+            raise Exception("You must specify the range of coordinates, i.e x_range = [-4,4], y_range = [0,10]")
         axes = ThreeDAxes(tips=False)
         def shape(u,v):
             z = lam(u, v)

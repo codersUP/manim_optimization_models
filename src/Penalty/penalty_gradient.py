@@ -1,7 +1,7 @@
 ## Penalty Function method using gradient.
 ## Loading the libraries.
-from gradient import gradient
-from utils import *
+from .gradient import gradient
+from .utils import *
 import numpy as np
 
 
