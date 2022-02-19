@@ -13,9 +13,16 @@ def welcome():
         st.markdown("- Enrique Martínez González")
 
     with col2:
+<<<<<<< HEAD
         st.markdown("- Andy A. Castañeda Guerra")
         st.markdown("- Richard García De la Osa")
 
     st.markdown(
         "## Para comenzar seleccione que programa desea ejecutar en el menú lateral 👈"
     )
+=======
+        st.markdown("- Andy Castañeda Guerra")
+        st.markdown("- Richard García de la Osa")
+
+    st.markdown("## Para comenzar seleccione qué programa desea ejecutar en el menú lateral 👈")
+>>>>>>> fix presentation page
