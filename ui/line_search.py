@@ -51,11 +51,11 @@ def linesearch():
         help="condiciones que cumple su ecuación no lineal"
     )
 
+    constrains = []
     if contr_cant:
         var_sections = []
         for x in range(0, contr_cant, 4):
             var_sections.extend(st.columns(min(4, contr_cant - x)))
-        constrains = []
         for i, section in enumerate(var_sections):
             with section:
                 st.latex(r"r_{%d}\\[-100pt]" % (i))
