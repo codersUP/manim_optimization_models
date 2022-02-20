@@ -16,7 +16,7 @@ def init_state():
 
 
 def cutedge():
-    st.title("Introduzca los datos necesarios para su computo")
+    st.title("Introduzca los datos necesarios para su cómputo")
 
     if not "cutedge" in st.session_state:
         init_state()
@@ -26,7 +26,6 @@ def cutedge():
     with sz:
         var_cant = st.number_input(
             "Cantidad de variables", 
-            value=st.session_state.variables_size, 
             key="variables_size",
             min_value=2, 
             max_value=2, 
@@ -129,17 +128,6 @@ def cutedge():
         placeholder.empty()
 
         st.video(video_path)
-
-        # <some logic here to run the code HERE>
-        # variables are
-        # var_names: Nombre de las variables
-        # form: Formula
-        # contrains: Condiciones de la formula
-        # u0, u1: Rango a graficar en las X
-        # v0, v1: Rango a graficar en las Y
-        # A: Matriz de coeficientes
-        # B: Terminos ind
-        # C: Coeficientes de la func objetivo
         
         # clear the placeholder at the end
         placeholder.empty()
