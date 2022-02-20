@@ -10,6 +10,7 @@ class Penalty(ThreeDScene):
             data = json.load(settings)
         
         _dict = penalty_newton()
+        print(_dict)
         variables, function, constraints = read_json(inputPath)
         lam = sym.Lambda(convert_list_to_tuples(variables), function)
         restrictions_lambdas = [sym.Lambda(convert_list_to_tuples(variables), con) for con in constraints]

@@ -59,8 +59,10 @@ def geo():
         )
         if form != '':
             
-            with open(path, 'r') as settings:
-                data = json.load(settings)
+            # with open(path, 'r') as settings:
+            #     data = json.load(settings)
+            data ={}
+            
             data["func"] = form
             constraints_ = []
             for con in contrains:
