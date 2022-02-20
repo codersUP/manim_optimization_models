@@ -27,7 +27,6 @@ def ramac():
     with sz:
         st.number_input(
             "Cantidad de variables",
-            value=st.session_state.variables_size,
             key="variables_size",
             min_value=1,
             max_value=2,
@@ -111,7 +110,7 @@ def ramac():
 
         # Writing to input.json in no package
         path = os.path.abspath(
-            os.path.join(__file__, "../../src/Branch_and_Bound/input.json")
+            os.path.join(__file__, "../../src/branch_and_bound/input.json")
         )
         with open(path, "w") as outfile:
             outfile.write(json_object)
