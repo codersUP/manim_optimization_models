@@ -111,7 +111,7 @@ def ramac():
 
         # Writing to input.json in no package
         path = os.path.abspath(
-            os.path.join(__file__, "../../src/Branch_and_Bound/input.json")
+            os.path.join(__file__, "../../src/branch_and_bound/input.json")
         )
         with open(path, "w") as outfile:
             outfile.write(json_object)

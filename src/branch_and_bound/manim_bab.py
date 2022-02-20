@@ -148,11 +148,11 @@ class BAB2D(Scene):
             x_length=abs(u_range[1] - u_range[0]),
             axis_config={"color": GREEN},
         )
-        axes_labels = axes.get_axis_labels()
+        # axes_labels = axes.get_axis_labels()
 
         function = axes.plot(lambda x: func_evaluated(x), color=BLUE)
 
-        axes_function = VGroup(axes, axes_labels, function)
+        axes_function = VGroup(axes, function)
 
         self.play(FadeIn(axes_function))
 

@@ -140,29 +140,3 @@ class Canvas(Scene):
       inter.extend(fi_fj)
 
     return inter
-
-## for the intersection between a list of lambda functions
-
-    # graph = ax.plot(lambda x: x**2, x_range=[0.01,4], use_smoothing=True)
-
-    # f1 = lambda x: x-0.5
-    # f2 = lambda x: 2*x/5
-    # f3 = lambda x: 10-(5*x/3)
-
-
-
-    # r1 = ax.plot(f1, x_range = range, use_smoothing=True)
-    # r2 = ax.plot(f2, x_range = range, use_smoothing=True)
-    # r3 = ax.plot(f3, x_range = range, use_smoothing=True)
-
-    # s_a = [f1,f2,f3]
-    # function_intersections = self.get_np_intersections(s_a)
-    # print(function_intersections)
-    
-    # inter_points = [Dot(ax.coords_to_point(*i), color=GREEN) for i in function_intersections]
-    # # inner_points = self.innerPoints(function_intersections)
-    # # inner_dots = [Dot(ax.coords_to_point(*i), color = BLUE) for i in inner_points]
-    # # self.add(*inner_dots)
-
-    # self.add(ax, r1,r2,r3)
-    # self.add(*inter_points)
