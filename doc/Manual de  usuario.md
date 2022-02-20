@@ -5,11 +5,12 @@
 ## Instalación y ejecución
 
 La aplicación cuenta con una lista de requerimientos, a los que puede acceder desde el correspondiente archivo; o si lo prefiere puede ejecutar el siguiente comando en la terminal, en la raíz del proyecto:
+
 ```
 make install
 ```
 
-Una vez instaladas las dependencias necesarias, puede iniciar la aplicación en cualquier momento. Para ello deberá ejecutar la siguiente línea de código en una consola: `make` o `make run`. El primero de ellos se encarga de llamar al segundo, en cuanto a funcionalidad sería n el mismo comando, así que no hay diferencia entre usar uno u otro. El resultado será una *url* donde podrá ver su aplicación en el browser.
+Una vez instaladas las dependencias necesarias, puede iniciar la aplicación en cualquier momento. Para ello deberá ejecutar la siguiente línea de código en una consola: `make` o `make run`. El primero de ellos se encarga de llamar al segundo, en cuanto a funcionalidad sería el mismo comando, así que no hay diferencia entre usar uno u otro. El resultado será una _url_ donde podrá ver su aplicación en el browser.
 
 ## Aplicación visual y cómo usarla
 
@@ -18,6 +19,7 @@ Lo primero que verá al abrir esta aplicación es la página de bienvenida donde
 ![drag-img](images/home_page.png)
 
 Puede notar que siempre que se encuentre en esta página estará marcada la opción "**Decidiendo ...**". Las otras opciones posibles son:
+
 - Solución geométrica para problemas de programación lineal
 - Método Simplex
 - Planos cortantes
@@ -36,9 +38,10 @@ A continuación se mostrará un ejemplo predeterminado para cada opción anterio
 ![drag-img](images/geometric_ex.png)
 
 Como puede ver en la imagen previa, ya los campos fueron rellenados con un ejemplo. Los datos a completar serían:
-- **Fórmula**: Función a optimizar. Es una expresión matemática, que soporta operadores como : +, -, *, **, \\, ^, &, ...
-- **Cantidad de restricciones**: Las restricciones serían las condiciones a las que están sujetas las variables, estas son las que determinan el conjunto de puntos factibles del problema. Note que puede aumentar o disminuir la cantidad que se muestra y con ello, aparecerán o desaparecerán respectivamente algunas casillas con label *r<sub>i</sub>*
-- **Casillas *r<sub>i</sub>***: Se refiere a la restricción i-ésima. Si en algún caso deja alguna casilla vacía se asumirá que cuenta con una restricción menos, así que tenga cuidado a la hora de rellenarlas.
+
+- **Fórmula**: Función a optimizar. Es una expresión matemática, que soporta operadores como : +, -, \*, \*\*, \\, ^, &, ...
+- **Cantidad de restricciones**: Las restricciones serían las condiciones a las que están sujetas las variables, estas son las que determinan el conjunto de puntos factibles del problema. Note que puede aumentar o disminuir la cantidad que se muestra y con ello, aparecerán o desaparecerán respectivamente algunas casillas con label _r<sub>i</sub>_
+- **Casillas _r<sub>i</sub>_**: Se refiere a la restricción i-ésima. Si en algún caso deja alguna casilla vacía se asumirá que cuenta con una restricción menos, así que tenga cuidado a la hora de rellenarlas.
 
 Luego de esto podrá marcar el botón **Computar**, que puede demorarse o no dependiendo de la cantidad de calculos a realizar. Una vez terminado el tiempo de espera obtendrá un resultado como el siguiente:
 
@@ -67,15 +70,15 @@ En este caso el modelo utilizado como ejemplo es el siguiente:
         height="120" 
         style="display: block; margin: 0 auto" />
 
-Primero deberá seleccionar la cantidad de variables que están involucradas en su problema, así como la cantidad de restricciones de desigualdad y de igualdad. En este caso son *3*, *0*, *2* respectivamente.
+Primero deberá seleccionar la cantidad de variables que están involucradas en su problema, así como la cantidad de restricciones de desigualdad y de igualdad. En este caso son _3_, _0_, _2_ respectivamente.
 
 Se le pide completar los intervalos a graficar para cada variable, lo que concierne al graficado que se realice a partir del cómputo y no al modelo en sí mismo.
 
-Luego debe rellenar la matriz de coeficientes de las restricciones, así como los valores independientes de las mismas. En este caso particular no hay restricciones de desigualdad, por tanto solo deberá completar con los valores de *A<sub>eq</sub>* y *b<sub>eq</sub>*. Tambié se requieren los valores de *c*, o sea, los coeficientes de la función objetivo.
+Luego debe rellenar la matriz de coeficientes de las restricciones, así como los valores independientes de las mismas. En este caso particular no hay restricciones de desigualdad, por tanto solo deberá completar con los valores de _A<sub>eq</sub>_ y _b<sub>eq</sub>_. Tambié se requieren los valores de _c_, o sea, los coeficientes de la función objetivo.
 
-Por último por cada variable deberá completar los límites de las mismas. Notará que por defecto aparecen unos valores ya en estas casillas, que serían el valor mínimo y máximo de número, representando el infinito en ambas direcciones. Por tanto si alguna variable no está limitada en alguna dirección podrá dejar la casilla tal cual aparece, como es el caso de este problema, donde solamente se conoce el límite inferior de cada variable, que es *0* en cada caso.
+Por último por cada variable deberá completar los límites de las mismas. Notará que por defecto aparecen unos valores ya en estas casillas, que serían el valor mínimo y máximo de número, representando el infinito en ambas direcciones. Por tanto si alguna variable no está limitada en alguna dirección podrá dejar la casilla tal cual aparece, como es el caso de este problema, donde solamente se conoce el límite inferior de cada variable, que es _0_ en cada caso.
 
-Antes de ejecutar el programa de solución, se muestra una breve explicación de lo que obtendrá después del cómputo: *El archivo multimedia que se mostrará tras presionar el botón de Computar, representa la interpretación geométrica del área de puntos factibles del problema y de las soluciones factibles que genera Simplex en cada iteración. Dichas soluciones se mostrarán como puntos amarillos. En caso de obtener un óptimo del problema, el punto se mostrará rojo. Si el problema consta de solo 3 variables, también se realizará una graficación en 3D del mismo.*
+Antes de ejecutar el programa de solución, se muestra una breve explicación de lo que obtendrá después del cómputo: _El archivo multimedia que se mostrará tras presionar el botón de Computar, representa la interpretación geométrica del área de puntos factibles del problema y de las soluciones factibles que genera Simplex en cada iteración. Dichas soluciones se mostrarán como puntos amarillos. En caso de obtener un óptimo del problema, el punto se mostrará rojo. Si el problema consta de solo 3 variables, también se realizará una graficación en 3D del mismo._
 
 Los resultados serán de la siguente forma:
 
@@ -84,7 +87,7 @@ Los resultados serán de la siguente forma:
 
 ### Planos Cortantes
 
-Los datos necesarios son las variables con las que se trabajará, así como las restricciones y función a optimizar para dichas restricciones. También debe especificarse la matriz *A*, y los vectores *b* y *c* tal que el problema se exprese de la forma $\min cx ~~\text{s.a.}~Ax\leq b$.
+Los datos necesarios son las variables con las que se trabajará, así como las restricciones y función a optimizar para dichas restricciones. También debe especificarse la matriz _A_, y los vectores _b_ y _c_ tal que el problema se exprese de la forma $\min cx ~~\text{s.a.}~Ax\leq b$.
 
 Al acabar, con el botón **Computar** se mandará a ejecutar el algoritmo de minimización y el renderizado de la escena con manim. Una vez todo esto concluya(puede tomar varios segundos) se reproducirá el video resultante de graficar el problema con sus restricciones, eje de coordenadas, cortes generados, y el punto óptimo así como sus coordenadas.
 
@@ -205,12 +208,11 @@ En color rojo, el punto inicial, especificado en los datos de entrada. En color 
 
 ### Penalización
 
-A continuación mostramos un ejemplo predeterminado para el problema de Penalización. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutarlo. 
+A continuación mostramos un ejemplo predeterminado para el problema de Penalización. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutarlo.
 
 ![drag-img](images/pen_page1.png)
 
 ![drag-img](images/pen_page2.png)
-
 
 Esta sería la configuración del **penalty_settings.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los otros parámetros son más específicos del método de penalización, la cantidad de iteraciones como caso de parada, el coeficiente de penalización, el valor para aumentar este, los rangos de x y las y. Los valores del mismo se llenan a través de la aplicación antes de ejecutar este algoritmo.
 
