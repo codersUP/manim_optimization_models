@@ -112,7 +112,7 @@ def plineal():
 
         # Writing to input.json in no package
         path = os.path.abspath(
-            os.path.join(__file__, "../../src/Numerical_Optimization/input.json")
+            os.path.join(__file__, "../../src/numerical_optimization/input.json")
         )
         with open(path, "w") as outfile:
             outfile.write(json_object)
