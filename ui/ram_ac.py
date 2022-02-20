@@ -98,17 +98,6 @@ def ramac():
         placeholder = st.empty()  # For displaying messages
         placeholder.success("Ejecutando...")
 
-        # <some logic here to run the code HERE>
-        # variables are
-        # var_names: Nombre de las variables
-        # form: Formula
-        # contrains: Condiciones de la formula
-        # x0, y0: Punto inicial
-        # u0, u1: Rango a graficar en las X
-        # v0, v1: Rango a graficar en las Y
-        # stroke: Stroke
-        # cycles: Los ciclos
-
         data = {
             "vars": var_names,
             "func": form,
@@ -140,7 +129,6 @@ def ramac():
         # clear the placeholder at the end
         placeholder.empty()
 
-        # st.write("Proyección sobre el plano XY")
         st.video(video_path)
 
         # clear the placeholder at the end
