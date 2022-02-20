@@ -160,9 +160,6 @@ def DFP(x_ip):
 	x_0=x_ip #This is the initial Guess_.  	
 
 	## step_2	
-	# s_0=np.zeros(M) ##Search Direction.
-	# grad0 = grad_multi_f(grad0, x_ip)
-	# s_0 = -grad0
 	s_0 = -grad_multi_f(grad0, x_ip)
 	
 	## step_3 --> unidirectional search along s_0 from x_0. Aim -- to find alphastar and eventually x(1).

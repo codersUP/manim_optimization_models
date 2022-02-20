@@ -53,20 +53,29 @@ def convert_list_to_tuples(list):
 def save_process(my_dict):
     
     inputPath = os.path.abspath(os.path.join(__file__, "../data.json"))
-    with open(inputPath, 'r') as fp1:
-        data = json.load(fp1)
-    for key in my_dict.keys():
-        data[key] = my_dict[key]
-    with open(inputPath, 'w') as fp:
-        fp.write(data, fp)
-
+    try:
+        with open(inputPath, 'r') as fp1:
+            data = json.load(fp1)
+        for key in my_dict.keys():
+            data[key] = my_dict[key]
+            
+        json_object = json.dumps(data, indent = 4)
+        with open(inputPath, 'w') as fp:
+            fp.write(json_object)
+    except:
+        json_object = json.dumps(my_dict, indent = 4)
+        with open(inputPath, 'w') as fp:
+            fp.write(json_object)
 def load_saved_data(key):   
     inputPath = os.path.abspath(os.path.join(__file__, "../data.json"))
-    with open(inputPath, 'r') as fp:
-        data = json.load(fp)
     try:
-        return data[key]
-    except KeyError:
+        with open(inputPath, 'r') as fp:
+            data = json.load(fp)
+        try:
+            return data[key]
+        except KeyError:
+            return None
+    except:
         return None
 
 def get_key_name(func, constraints):

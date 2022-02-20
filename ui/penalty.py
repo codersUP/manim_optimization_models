@@ -117,7 +117,7 @@ def penalty():
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
         path = os.path.abspath(
-            os.path.join(__file__, "../../src/Penalty/penalty_settings.json")
+            os.path.join(__file__, "../../src/penalty/penalty_settings.json")
         )
         
         if form != '' and len(var_names) != 0:

@@ -37,17 +37,17 @@ def newton(vars, func, initial_point, cycles=100, verbose=False):
     }
 
 
-def main():
-    f = open("newton.json")
-    data = json.load(f)
+# def main():
+#     f = open("newton.json")
+#     data = json.load(f)
 
-    m = newton(**data)
-    min = m["min"]
-    min_values = m["min_value"]
+#     m = newton(**data)
+#     min = m["min"]
+#     min_values = m["min_value"]
 
-    print(min, min_values)
-    pprint(m["points"])
+#     print(min, min_values)
+#     pprint(m["points"])
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
