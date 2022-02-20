@@ -1,5 +1,5 @@
 from src.simplex.manim_model import Simplex2D as X, Simplex3D as Y
-# from src.geometric.Geo_Manim import Geo_Manim as G
+from src.geometric.Geo_Manim import Geo_Manim as G
 from src.penalty.penalty_manim import Penalty as P
 from src.line_search.line_search import ThreeDCanvas as lineSearch
 from src.cutting_planes.gomory_cutting_planes import Canvas as cuttingPlanes
@@ -11,7 +11,7 @@ class TwoDSimplex(X): pass
 
 class ThreeDSimplex(Y): pass
 
-# class TwoDGeo_Manim(G): pass
+class TwoDGeo_Manim(G): pass
 
 class ThreeDPenalty_Manim(P): pass
 
