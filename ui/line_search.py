@@ -1,5 +1,4 @@
 import streamlit as st
-import sys
 import os
 import json
 import subprocess
@@ -19,7 +18,7 @@ def init_state():
 
 
 def linesearch():
-    st.title("Introduzca los datos necesarios para su computo")
+    st.title("Introduzca los datos necesarios para su cómputo")
 
     if not "linesearch" in st.session_state:
         init_state()
@@ -29,7 +28,6 @@ def linesearch():
     with sz:
         var_cant = st.number_input(
             "Cantidad de variables", 
-            value=st.session_state.variables_size, 
             key="variables_size",
             min_value=2, 
             max_value=2, 

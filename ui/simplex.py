@@ -26,7 +26,6 @@ def simplex():
 
     var_cant = sz.number_input(
         "Cantidad de variables involucradas en el problema", 
-        value=st.session_state.variables_size, 
         key="variables_size",
         min_value=2, 
         max_value=10, 
@@ -191,6 +190,7 @@ def simplex():
             video_path2 = "media/videos/main/480p15/ThreeDSimplex.mp4"
         
         os.remove(".temp")
+        
         # clear the placeholder at the end
         placeholder.empty()
 
@@ -201,3 +201,5 @@ def simplex():
         if not video_path2 is None:
             st.write("Superficie tridimensional")
             st.video(video_path2)
+
+        placeholder.empty()

@@ -5,7 +5,6 @@ from sympy.parsing.sympy_parser import (
     standard_transformations,
     convert_equals_signs,
 )
-import numpy as np
 from pprint import pprint
 import json
 

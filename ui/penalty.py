@@ -1,5 +1,4 @@
 import streamlit as st
-import sys
 import os
 import json
 import subprocess
@@ -144,27 +143,13 @@ def penalty():
             
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "ThreeDPenalty_Manim"])
-        video_path = "media/videos/ThreeDPenalty_Manim/480p15/Penalty_Manim_ManimCE_v0.14.0.mp4"
-        # # # with open(".temp", "r") as fp:
-        # # #     msg = fp.read()
-
+        video_path = "media/videos/main/480p15/ThreeDPenalty_Manim.mp4"
         
-        # # # os.remove(".temp")
-        # # # clear the placeholder at the end
+        # clear the placeholder at the end
         placeholder.empty()
 
         st.write("Resultado")
         st.video(video_path)
-        # <some logic here to run the code HERE>
-        # variables are
-        # var_names: Nombre de las variables
-        # form: Formula
-        # contrains: Condiciones de la formula
-        # x0, y0: Punto inicial
-        # u0, u1: Rango a graficar en las X
-        # v0, v1: Rango a graficar en las Y
-        # stroke: Stroke
-        # cycles: Los ciclos :-P
         
         # clear the placeholder at the end
         placeholder.empty()

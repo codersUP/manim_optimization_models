@@ -2,8 +2,6 @@ from functools import reduce
 import sympy as sp
 from scipy.optimize import minimize
 import numpy as np
-# from pprint import pprint
-# import json
 
 
 def convert_list_to_tuples(list):

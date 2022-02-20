@@ -36,30 +36,3 @@ def call_simplex():
         fp.write(message(ans))
 
     return data, results, ans
-
-     # data = {
-    #     "vars_c": np.array([-2, -3]),
-    #     "A_ineq": np.array([[1, 1], [1, 2], [-1, 1]]),
-    #     "b_ineq": np.array([3, 4, 1]),
-    #     "A_eq": None,
-    #     "b_eq": None,
-    #     "bounds": ((0, None), (0, None)),
-    # }
-
-    # data = {
-    #     "vars_c": np.array([1, 1, 4]),
-    #     "A_ineq": None,
-    #     "b_ineq": None,
-    #     "A_eq": np.array([[1, -1, -1], [2, -3, -3]]),
-    #     "b_eq": np.array([1, 2]),
-    #     "bounds": ((0, None), (0, None), (0, None)),
-    # }
-
-    # data = {
-    #     "vars_c": np.array([8,-2]),
-    #     "A_ineq": None,
-    #     "b_ineq": None,
-    #     "A_eq": np.array([[1, -1], [-4, 1]]),
-    #     "b_eq": np.array([1, 4]),
-    #     "bounds": ((0, None), (0, None)),
-    # }

@@ -55,7 +55,7 @@ def geo():
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
         path = os.path.abspath(
-            os.path.join(__file__, "../../src/Geometric/geometric_aproach.json")
+            os.path.join(__file__, "../../src/geometric/geometric_aproach.json")
         )
         if form != '':
             
@@ -80,3 +80,5 @@ def geo():
         placeholder.empty()
 
         st.video(video_path)
+
+        placeholder.empty()
