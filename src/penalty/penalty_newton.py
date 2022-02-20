@@ -5,9 +5,6 @@ from .utils import *
 import numpy as np
 import os
 
-
-# Devuelve el valor de la función penalizada Φ(x, u) en un punto 
-
 # minimize = 0, maximize = 1
 def penalty_newton():
     inputPath = os.path.abspath(os.path.join(__file__, "../penalty_settings.json"))

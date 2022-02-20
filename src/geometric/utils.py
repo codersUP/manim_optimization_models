@@ -79,59 +79,8 @@ def get_key_name(func, constraints):
         f+= str(c) + ' ' if i != len(constraints) else str(c)
     return f
 
-
 x = sym.Symbol('x')
 y = sym.Symbol('y')
-# def get_min_cleared_constraint(ineq):
-#     l = ineq.lhs
-#     r = ineq.rhs
-#     if len(l.free_symbols) == 2:
-#         # estan ambas dos en la izquierda aún
-#         newr = r
-#         for arg in l.args:
-#             if arg.free_symbols.__contains__(y):
-#                 newl = arg
-#                 continue
-#             if l.is_Add:
-#                 newr -= arg
-#             elif l.is_Mul:
-#                 newr /= arg
-#         return get_min_cleared_constraint(newl >= newr)
-#     if len(l.free_symbols) == 1:
-#         if l.free_symbols.__contains__(y):
-#             if len(l.args) == 0:
-#                 return ineq
-#             else:
-#                 newr = r
-#                 for arg in l.args:
-#                     if arg.free_symbols.__contains__(y):
-#                         newl = arg
-#                         continue
-#                     if l.is_Add:
-#                         newr -= arg
-#                     elif l.is_Mul:
-#                         newr /= arg
-#             return get_min_cleared_constraint(newl >= newr)
-#         elif l.free_symbols.__contains__(x):
-#             if len(l.args) == 0:
-#                 return ineq
-#             else:
-#                 newr = r
-#                 for arg in l.args:
-#                     if arg.free_symbols.__contains__(x):
-#                         newl = arg
-#                         continue
-#                     if l.is_Add:
-#                         newr -= arg
-#                     elif l.is_Mul:
-#                         newr /= arg
-#                 return get_min_cleared_constraint(newl >= newr)
-    # if ineq.rel_op.__contains__('>'):
-    #     return newl >= newr
-    # else: 
-    #     return newl <= newr
-    
-# x**2 = 4 => x = log4_2
 
 # despejar las inecuaciones
 def get_cleared_constraint(ineq):

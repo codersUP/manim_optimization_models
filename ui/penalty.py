@@ -119,8 +119,7 @@ def penalty():
         path = os.path.abspath(
             os.path.join(__file__, "../../src/Penalty/penalty_settings.json")
         )
-        # with open(path, 'r') as settings:
-        #     data = json.load(settings)
+        
         if form != '' and len(var_names) != 0:
             data = {}
             data["Penalty_number_of_sequence"]= seq
