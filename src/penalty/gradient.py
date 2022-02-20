@@ -53,13 +53,6 @@ def gradient(vars, func, initial_point, cycles=100, verbose=False):
             )
             print(res[0])
             r_point = start_point + res[0] * search_gradient
-            # search_gradient = res[5]
-            # x_2 = [0 for _ in range(len(vars))]
-            # for j in range(len(vars)):
-            #     x_2[j] = r_point[j] - start_point[j]
-
-            # if((np.linalg.norm(gradient_evaluated(r_point)) <= 0.001) or (np.linalg.norm(x_2)/np.linalg.norm(start_point)) <= 0.001):
-            #     break
             
             if points[-1]["value"] - func_evaluated(r_point) < EPSILON:
                 break
