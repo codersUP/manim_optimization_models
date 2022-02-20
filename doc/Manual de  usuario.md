@@ -1,16 +1,20 @@
-### Informe para el usuario:
+# Manual de usuario
+
+¡Bienvenido querido usuario! 
 
 Para iniciar la aplicación debe ejecutar la siguiente línea de código en una consola.
 
-![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-18-50.png)
+```
+make run
+```
 
 Este sería el menú principal de nuestra aplicación. En este damos a conocer los datos de los integrantes del equipo y del proyecto en general, así como las opciones del programa a la izquierda. 
 
-![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-13-32.png)
+![drag-img](./images/home_page.png)
 
 A continuación mostramos un ejemplo predeterminado para el problema de la solución geométrica. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutar este. 
 
-![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-13-53.png)
+######### (Introducir imagen de ejemplo de geometric)- No tenia tilde computo ######
 
 A continuación mostramos un ejemplo predeterminado para el problema de Penalización. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutarlo. 
 
@@ -18,7 +22,7 @@ A continuación mostramos un ejemplo predeterminado para el problema de Penaliza
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-19 13-16-01.png)
 
-Este sería un ejemplo de como ejecutar el programa en Manim, el flag **-ql** es para la calidad, la **l** significa low, existen otros como **m**, **h**, **k** los cuales corresponden a medium, high y 4k respectivamente. Se debe tener cuidado al usar estos por el consumo de CPU. También podemos añadirle **-p** al flag anterior quedando **-pql** para que al terminar de ejecutar el programa muestre el resultado en un video. Los demás parámetros deben ser el nombre del .py a ejecutar y el nombre de la clase que implementa las clases de Manim. El flag --format=gif es usado para que el archivo que retorne sea en formato gif y no un video.
+Este sería un ejemplo de cómo ejecutar el programa en Manim, el flag **-ql** es para la calidad, la **l** significa low, existen otros como **m**, **h**, **k** los cuales corresponden a medium, high y 4k respectivamente. Se debe tener cuidado al usar estos por el consumo de CPU. También podemos añadirle **-p** al flag anterior quedando **-pql** para que al terminar de ejecutar el programa muestre el resultado en un video. Los demás parámetros deben ser el nombre del .py a ejecutar y el nombre de la clase que implementa las clases de Manim. El flag --format=gif es usado para que el archivo que retorne sea en formato gif y no un video.
 
 ![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 18-04-38.png)
 
