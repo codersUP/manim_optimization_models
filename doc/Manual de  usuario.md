@@ -1,8 +1,8 @@
 # Manual de usuario
 
-¡Bienvenido querido usuario! Esta aplicación fue desarrollada a partir de la biblioteca Manim de python. Su objetivo principal es permitir la visualización de conceptos y algoritmos relacionados con Modelos de Optimización
+¡Bienvenido querido usuario! Esta aplicación fue desarrollada a partir de la biblioteca Manim de python. Su objetivo principal es permitir la visualización de conceptos y algoritmos relacionados con Modelos de Optimización.
 
-## Instalación y ejecución
+### Instalación y ejecución
 
 La aplicación cuenta con una lista de requerimientos, a los que puede acceder desde el correspondiente archivo; o si lo prefiere puede ejecutar el siguiente comando en la terminal, en la raíz del proyecto:
 
@@ -12,7 +12,7 @@ make install
 
 Una vez instaladas las dependencias necesarias, puede iniciar la aplicación en cualquier momento. Para ello deberá ejecutar la siguiente línea de código en una consola: `make` o `make run`. El primero de ellos se encarga de llamar al segundo, en cuanto a funcionalidad sería el mismo comando, así que no hay diferencia entre usar uno u otro. El resultado será una _url_ donde podrá ver su aplicación en el browser.
 
-## Aplicación visual y cómo usarla
+### Aplicación visual y cómo usarla
 
 Lo primero que verá al abrir esta aplicación es la página de bienvenida donde se encuentran los datos de los desarrolladores y la descripción de la misma. Encontrará una barra lateral izquierda con un menú de opciones, donde cada opción representa una de las acciones que puede ejecutar en el programa. Esta página inicial es la siguiente:
 
@@ -20,14 +20,14 @@ Lo primero que verá al abrir esta aplicación es la página de bienvenida donde
 
 Puede notar que siempre que se encuentre en esta página estará marcada la opción "**Decidiendo ...**". Las otras opciones posibles son:
 
-- Solución geométrica para problemas de programación lineal
-- Método Simplex
-- Planos cortantes
-- Ramificación y acotación
-- Ideas geométricas de demostración de teoremas
-- Métodos numéricos para la optimización no lineal
-- Búsqueda en línea
-- Penalización
+- Solución geométrica para problemas de programación lineal.
+- Método Simplex.
+- Planos cortantes.
+- Ramificación y acotación.
+- Ideas geométricas de demostración de teoremas.
+- Métodos numéricos para la optimización no lineal.
+- Búsqueda en línea.
+- Penalización.
 
 La idea principal es que dado un problema de optimización y la acción que usted desee realizar, marque la opción correspondiente y sea capaz de insertar los datos de su problema en la aplicación; de modo que esta se encargue de resolverla y hacer las graficaciones pertinentes. Para ello, seleccionar alguna de estas opciones dará lugar a un formulario donde usted podrá rellenar los campos requeridos para la resolución de su problema.
 
@@ -43,7 +43,7 @@ Como puede ver en la imagen previa, ya los campos fueron rellenados con un ejemp
 - **Cantidad de restricciones**: Las restricciones serían las condiciones a las que están sujetas las variables, estas son las que determinan el conjunto de puntos factibles del problema. Note que puede aumentar o disminuir la cantidad que se muestra y con ello, aparecerán o desaparecerán respectivamente algunas casillas con label _r<sub>i</sub>_
 - **Casillas _r<sub>i</sub>_**: Se refiere a la restricción i-ésima. Si en algún caso deja alguna casilla vacía se asumirá que cuenta con una restricción menos, así que tenga cuidado a la hora de rellenarlas.
 
-Luego de esto podrá marcar el botón **Computar**, que puede demorarse o no dependiendo de la cantidad de calculos a realizar. Una vez terminado el tiempo de espera obtendrá un resultado como el siguiente:
+Luego de esto podrá marcar el botón **Computar**, que puede demorarse o no dependiendo de la cantidad de cálculos a realizar. Una vez terminado el tiempo de espera obtendrá un resultado como el siguiente:
 
 ![drag-img](images/geometric_result.png)
 
@@ -83,6 +83,7 @@ Antes de ejecutar el programa de solución, se muestra una breve explicación de
 Los resultados serán de la siguente forma:
 
 ![drag-img](images/simplex_result2d.png)
+
 ![drag-img](images/simplex_result3d.png)
 
 ### Planos Cortantes
@@ -93,7 +94,7 @@ Los datos necesarios son las variables con las que se trabajará, así como las 
 
 ![drag-img](images/cutting_planes_page2.png)
 
-Al acabar, con el botón **Computar** se mandará a ejecutar el algoritmo de minimización y el renderizado de la escena con manim. Una vez todo esto concluya(puede tomar varios segundos) se reproducirá el video resultante de graficar el problema con sus restricciones, eje de coordenadas, cortes generados, y el punto óptimo así como sus coordenadas.
+Al acabar, con el botón **Computar** se mandará a ejecutar el algoritmo de minimización y el renderizado de la escena con Manim. Una vez todo esto concluya(puede tomar varios segundos) se reproducirá el video resultante de graficar el problema con sus restricciones, eje de coordenadas, cortes generados, y el punto óptimo así como sus coordenadas.
 
 ![drag-img](images/cutting_planes_final_sc.png "Resultado final de planos cortantes")
 
@@ -168,28 +169,18 @@ En color rojo, el punto inicial, especificado en los datos de entrada. En color 
 
 ### Penalización
 
-A continuación mostramos un ejemplo predeterminado para el problema de Penalización. De esta forma se puede apreciar la forma en que se llenan las casillas de los parámetros necesarios para ejecutarlo.
+A continuación mostramos un ejemplo predeterminado para el problema de Penalización. De esta forma se puede apreciar la forma en que se rellenan las casillas de los parámetros necesarios para ejecutarlo.
 
 ![drag-img](images/pen_page1.png)
 
 ![drag-img](images/pen_page2.png)
 
-Esta sería la configuración del **penalty_settings.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los otros parámetros son más específicos del método de penalización, la cantidad de iteraciones como caso de parada, el coeficiente de penalización, el valor para aumentar este, los rangos de x y las y. Los valores del mismo se llenan a través de la aplicación antes de ejecutar este algoritmo.
 
-![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-47-22.png)
-
-Esta sería la configuración del **geometric_aproach.json** la cual consiste en 2 objetos, el primer string corresponde a la función objetivo y el segundo es una lista con las restricciones descritas a través de strings. Los valores del mismo se llenan a través de la aplicación antes de ejecutar este algoritmo al igual que el anterior.
-
-![drag-img](./imagenes utilizadas/Screenshot from 2022-02-18 17-47-32.png)
 
 A continuación tenemos ejemplos de lo realizado.
 
-![drag-gif](./imagenes utilizadas/Screenshot from 2022-02-18 18-15-49.png)
+![drag-gif](/home/regnod/Documents/4to/modelos de optimización 2/Proyecto Manim/doc/images/penalización example.png)
 
-![drag-gif](./imagenes utilizadas/Screenshot from 2022-02-18 18-15-17.png)
+![drag-gif](/home/regnod/Documents/4to/modelos de optimización 2/Proyecto Manim/doc/images/penalización example2.png)
 
-Aquí podemos observar cómo sería el resultado de graficar una función con esta herramienta en 3d.
 
-![drag-gif](./imagenes utilizadas/Screenshot from 2022-02-18 17-52-55.png)
-
-![drag-gif](./imagenes utilizadas/Screenshot from 2022-02-18 18-15-38.png)
