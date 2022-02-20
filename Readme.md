@@ -468,7 +468,7 @@ El flag **-ql** es para la calidad, la **l** significa low; existen otros como *
 
 ## Contáctenos
 
-Link del repositorio en github: [github.com/codersUP/manim_optimization_models] (https://github.com/codersUP/manim_optimization_models)
+Link del repositorio en github: [github.com/codersUP/manim_optimization_models](https://github.com/codersUP/manim_optimization_models)
 
 ### Desarrolladores:
 
