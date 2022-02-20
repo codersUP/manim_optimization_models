@@ -104,7 +104,7 @@ y posee 4 restricciones:
 $$x >= -2, y >= -2, x <= 2, y <= 2$$
 Resaltar que no se deben dejar campos en blanco.
 
-El resto de campos que se deben rellenar es el punto inicial que se utilizará en el algorítmo para encontrar una aproximación al punto mínimo, además se debe proporcionar el rango en los ejes que se desea graficar, en el ejemplo anterior es $[-5, 5]$ para ambos ejes. No olvidar que se debe definir el grosor de línea que se desea utilizar.
+El resto de campos que se deben rellenar es el punto inicial que se utilizará en el algoritmo para encontrar una aproximación al punto mínimo, además se debe proporcionar el rango en los ejes que se desea graficar, en el ejemplo anterior es $[-5, 5]$ para ambos ejes. No olvidar que se debe definir el grosor de línea que se desea utilizar.
 
 Este caso en concreto nos arrojaría la gráfica siguiente.
 
@@ -128,44 +128,17 @@ Puede marcar el que desee (aunque en este momento solo se cuenta con el algoritm
 
 ### Métodos numéricos para la optimización no lineal
 
-Para realizar una animación del Método del gradiente, Método del gradiente conjugado y el Método de Newton se debe definir un json con el nombre `numerical_optimization.json` que posea la siguiente estructura:
+Para realizar una animación del Método del gradiente, Método del gradiente conjugado y el Método de Newton se deben rellenar los campos de la sección _Métodos numéricos para la optimización no lineal_ de la aplicación. A continuación se muestra un ejemplo de como se pudiesen rellenar estas líneas:
 
-    {
-        "vars": vars,
-        "func": func,
-        "initial_point": initial_point,
-        "u_range": u_range,
-        "v_range": v_range,
-        "stroke_width": stroke_width
-        "cycles": cycles
-    }
+![drag-img](images/no3d_json.png)
 
-- "vars" (list[string]): las diferentes variables que se encuentran en la función a minimizar
-- "func" (string): la función que se desea minimizar
-- "initial_point" (list[float]): punto inicial que se tomará para la minimización de la función
-- "u_range" ([float, float]): el intervalo que se generará en el gráfico en el eje x
-- "v_range" ([float, float]): el intervalo que se generará en el gráfico en el eje y
-- "stroke_width" (float): grosor de las líneas en el gráfico a generar
-- "cycles" (int): cantidad de iteraciones máximas que se desean realizar para obtener una aproximación del mínimo valor.
-
-Podemos poner como ejemplo:
-
-    {
-        "vars": ["x", "y"],
-        "func": "- (7 _ x _ y / 2.71828 ** ( x ** 2 + y \*\* 2))",
-        "constraints": ["x >= -2", "y >= -2", "x <= 2", "y <= 2"],
-        "initial_point": [1, 1],
-        "u_range": [-5, 5],
-        "v_range": [-5, 5],
-        "stroke_width": 0.5,
-        "cycles": 500
-    }
-
-Este json anterior nos daría como resultado una animación como se muestra en la siguiente imagen:
+Este ejemplo representa la misma función a minimizar mostrada en la sección _Ramificación y acotación_ de este manual de usuario con la característica de que no posee restricciones en esta ocasión y se debe plantear la cantidad de ciclos máximos que se desean realizar para la obtención del mínimo valor en los distintos algoritmos. Al rellenar los distintos campos justo como se muestra en la imagen se generará una animación como la siguiente:
 
 ![drag-gif](images/no3d.jpg)
 
-En cambio si lo modificamos para que posea una sola variable obtendremos algo como el siguiente ejemplo:
+En donde podemos ir apreciando el recorrido de puntos que van realizando los distintos algoritmos a medida que van ejecutándose.
+
+En cambio si lo modificamos para que posea una sola variable obtendremos una animación como el siguiente ejemplo:
 
 ![drag-gif](images/no2d.jpg)
 
