@@ -38,9 +38,9 @@ def read_json(path):
     with open(path) as settings:
         data = json.load(settings)
 
-    f = data['Penalty_func'][0]
+    f = data['Penalty_func']
     variables = data['Penalty_vars']
-    c = data['Penalty_constraints'][0]
+    c = data['Penalty_constraints']
     
     constraints = get_constraints(c)
     function = parse_expr(f)

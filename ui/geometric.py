@@ -62,7 +62,11 @@ def geo():
             with open(path, 'r') as settings:
                 data = json.load(settings)
             data["func"] = form
-            data["constraints"] = contrains
+            constraints_ = []
+            for con in contrains:
+                if con != '':
+                    constraints_.append(con)
+            data["constraints"] = constraints_
         
             json_object = json.dumps(data, indent = 4)
             with open(path, 'w') as settings:

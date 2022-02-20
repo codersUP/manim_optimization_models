@@ -124,15 +124,19 @@ def penalty():
         #     data = json.load(settings)
         if form != '' and len(var_names) != 0:
             data = {}
-            data["Penalty_number_of_sequence"]= seq,
-            data["Penalty_penalty_factor"]= pfactor,
-            data["Penalty_update_factor"]= ufactor,
-            data["Penalty_constraints"]= contrains,
+            data["Penalty_number_of_sequence"]= seq
+            data["Penalty_penalty_factor"]= pfactor
+            data["Penalty_update_factor"]= ufactor
+            constraints_ = []
+            for con in contrains:
+                if con != '':
+                    constraints_.append(con)
+            data["Penalty_constraints"] = constraints_
             data["Penalty_max_or_min"]= minmax,
-            data["Penalty_init_point"]= [x0, y0],
-            data["Penalty_x_range"]= [u0, u1, 1],
-            data["Penalty_y_range"]= [v0, v1, 1],
-            data["Penalty_func"]= form,
+            data["Penalty_init_point"]= [x0, y0]
+            data["Penalty_x_range"]= [u0, u1, 1]
+            data["Penalty_y_range"]= [v0, v1, 1]
+            data["Penalty_func"]= form
             data["Penalty_vars"]= var_names
             json_object = json.dumps(data, indent = 4)
             with open(path, 'w') as settings:
@@ -140,7 +144,7 @@ def penalty():
             
         # Execute Manim graphics
         subprocess.run(["manim", "-ql", "main.py", "ThreeDPenalty_Manim"])
-        video_path = "media/videos/Penalty_Manim/480p15/Penalty_Manim_ManimCE_v0.14.0.mp4"
+        video_path = "media/videos/ThreeDPenalty_Manim/480p15/Penalty_Manim_ManimCE_v0.14.0.mp4"
         # # # with open(".temp", "r") as fp:
         # # #     msg = fp.read()
 

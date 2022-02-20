@@ -13,13 +13,13 @@ def penalty_newton():
     inputPath = os.path.abspath(os.path.join(__file__, "../penalty_settings.json"))
     with open(inputPath, 'r') as settings:
         data = json.load(settings)
-    numseq      = data['Penalty_number_of_sequence'][0]
-    r           = data['Penalty_penalty_factor'][0]
-    c           = data['Penalty_update_factor'][0]
-    constraints = data['Penalty_constraints'][0]
-    min_or_max  = data['Penalty_max_or_min'][0]
-    x_ip        = data['Penalty_init_point'][0]
-    function    = data['Penalty_func'][0]
+    numseq      = data['Penalty_number_of_sequence']
+    r           = data['Penalty_penalty_factor']
+    c           = data['Penalty_update_factor']
+    constraints = data['Penalty_constraints']
+    min_or_max  = data['Penalty_max_or_min']
+    x_ip        = data['Penalty_init_point']
+    function    = data['Penalty_func']
     variables   = data['Penalty_vars']
 
     variables   = convert_list_to_tuples(variables)
