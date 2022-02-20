@@ -175,12 +175,10 @@ A continuación mostramos un ejemplo predeterminado para el problema de Penaliza
 
 ![drag-img](images/pen_page2.png)
 
-
-
 A continuación tenemos ejemplos de lo realizado.
 
-![drag-gif](/home/regnod/Documents/4to/modelos de optimización 2/Proyecto Manim/doc/images/penalización example.png)
+![drag-gif](images/pen_ex.png)
 
-![drag-gif](/home/regnod/Documents/4to/modelos de optimización 2/Proyecto Manim/doc/images/penalización example2.png)
+![drag-gif](images/pen_ex2.png)
 
 
