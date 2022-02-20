@@ -87,7 +87,11 @@ Los resultados serán de la siguente forma:
 
 ### Planos Cortantes
 
+![drag-img](images/cutting_planes_page1.png)
+
 Los datos necesarios son las variables con las que se trabajará, así como las restricciones y función a optimizar para dichas restricciones. También debe especificarse la matriz _A_, y los vectores _b_ y _c_ tal que el problema se exprese de la forma $\min cx ~~\text{s.a.}~Ax\leq b$.
+
+![drag-img](images/cutting_planes_page2.png)
 
 Al acabar, con el botón **Computar** se mandará a ejecutar el algoritmo de minimización y el renderizado de la escena con manim. Una vez todo esto concluya(puede tomar varios segundos) se reproducirá el video resultante de graficar el problema con sus restricciones, eje de coordenadas, cortes generados, y el punto óptimo así como sus coordenadas.
 
@@ -145,6 +149,8 @@ En cambio si lo modificamos para que posea una sola variable obtendremos una ani
 ### Búsqueda en línea
 
 Este método permite especificar parámetros para ajustar el ángulo de la cámara, pues en muchas escenas es probable que la cámara quede obstruida totalmente por la función graficada, en cuyo caso la imagen será un recuadro completo de color rojo. También se debe tener cuidado al especificar el rango de las **x** y de las **y** que se quiere representar. De no tenerse en consideración estos parámetros, es altamente probable que el video renderizado o no contenga la zona de interés para el problema, o se vea totalmente obstruida la cámara por la función a optimizar.
+
+![drag-img](images/line_search_page1.png)
 
 Una vez se esté seguro de la validez de los datos introducidos, con el botón computar se comenzará el algoritmo de optimización y posterior renderizado de la escena. Renderizar la escena en tres dimensiones puede tomar desde algunos segundos hasta varios minutos dependiendo de cuántas iteraciones se realizaron antes de llegar al óptimo, pues por cada iteración se agrega un nuevo punto a la escena.
 

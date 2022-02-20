@@ -76,6 +76,7 @@ def linesearch():
     v0 = y_axis[0].number_input("inicio", key="y0")
     v1 = y_axis[1].number_input("fin", key="y1")
 
+    st.latex(r"\text{Ángulo de inclinación de la cámara:}")
     col = st.columns(2)
 
     phi = col[0].number_input(
