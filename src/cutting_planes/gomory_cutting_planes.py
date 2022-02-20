@@ -67,7 +67,6 @@ class Canvas(Scene):
   def cutToLambda(cuts, normalize = False):
     for cut in cuts:
       # the cut has the form ax+by=c
-      # print(cut)
       a,b,c = cut.left.left[0], cut.left.left[1], cut.right
       vertical = False
 
@@ -75,7 +74,6 @@ class Canvas(Scene):
         m = max([abs(a), abs(b), abs(c)])
         a, b, c = a/m, b/m, c/m
 
-      # print(a,b,c)
 
       # case of b = 0, vertical line
       if b == 0:

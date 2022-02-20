@@ -37,8 +37,6 @@ class ThreeDCanvas(ThreeDScene):
 
 
     f = lambda u,v: np.array([u,v, fp([u,v])])
-    # fp = lambda x: x[0]**2 + 3*x[0]*x[1]
-    # constraints = []
 
 
     graph = Surface(
