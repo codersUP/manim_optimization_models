@@ -49,11 +49,11 @@ def cutedge():
         help="condiciones que cumple su ecuación no lineal"
     )
 
+    constrains = []
     if contr_cant:
         var_sections = []
         for x in range(0, contr_cant, 4):
             var_sections.extend(st.columns(min(4, contr_cant - x)))
-        constrains = []
         for i, section in enumerate(var_sections):
             with section:
                 st.latex(r"r_{%d}\\[-100pt]" % (i))
@@ -70,9 +70,9 @@ def cutedge():
     v0 = y_axis[0].number_input("inicio", key="y0")
     v1 = y_axis[1].number_input("fin", key="y1")
 
+    A, B = [], []
     if contr_cant:
         st.latex(r"\text{Matriz de coeficientes (}a_{i,j}\text{) y términos independientes (}b_i\text{)}")
-        A, B = [], []
         for i in range(contr_cant):
             A.append([])
             items = st.columns(var_cant + 1)
@@ -99,6 +99,8 @@ def cutedge():
 
     run = st.button("Computar")
     if run:
+        assert A is not None and B is not None and C is not None, "Debe especificar al menos una restricción e incluir los valores de A, b y c"
+        
         placeholder = st.empty() # For displaying messages
         placeholder.success("Ejecutando...")
 
