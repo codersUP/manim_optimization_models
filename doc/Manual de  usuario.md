@@ -95,43 +95,24 @@ Al acabar, con el botón **Computar** se mandará a ejecutar el algoritmo de min
 
 ### Ramificación y acotación
 
-Para realizar una animación del método de ramificación y acotación se debe definir un json con el nombre `bab.json` que posea la siguiente estructura:
+Para realizar una animación del método de ramificación y acotación se deben rellenar los distintos campos en la sección de _Ramificación y acotación_ de la aplicación, a continuación se muestra un ejemplo:
 
-    {
-        "vars": vars,
-        "func": func,
-        "constraints": constraints,
-        "initial_point": initial_point,
-        "u_range": u_range,
-        "v_range": v_range,
-        "stroke_width": stroke_width
-    }
+![drag-gif](images/bab3d_json.png)
 
-- "vars" (list[string]): las diferentes variables que se encuentran en la función a minimizar
-- "func" (string): la función que se desea minimizar
-- "constraints" (list[string]): las diferentes restricciones que se desean agregar
-- "initial_point" (list[float]): punto inicial que se tomará para la minimización de la función
-- "u_range" ([float, float]): el intervalo que se generará en el gráfico en el eje x
-- "v_range" ([float, float]): el intervalo que se generará en el gráfico en el eje y
-- "stroke_width" (float): grosor de las líneas en el gráfico a generar
+Este corresponde a un problema en el que se desea minimizar la función $$- (7 * x * y / 2.71828 ^ {( x ^ 2 + y ^ 2))}$$
+y posee 4 restricciones:
+$$x >= -2, y >= -2, x <= 2, y <= 2$$
+Resaltar que no se deben dejar campos en blanco.
 
-Podemos poner como ejemplo:
+El resto de campos que se deben rellenar es el punto inicial que se utilizará en el algorítmo para encontrar una aproximación al punto mínimo, además se debe proporcionar el rango en los ejes que se desea graficar, en el ejemplo anterior es $[-5, 5]$ para ambos ejes. No olvidar que se debe definir el grosor de línea que se desea utilizar.
 
-    {
-        "vars": ["x", "y"],
-        "func": "- (7 * x * y / 2.71828 ** ( x ** 2 + y ** 2))",
-        "constraints": ["x >= -2", "y >= -2", "x <= 2", "y <= 2"],
-        "initial_point": [1, 1],
-        "u_range": [-5, 5],
-        "v_range": [-5, 5],
-        "stroke_width": 0.5
-    }
-
-Este json anterior nos daría como resultado una animación como se muestra en la siguiente imagen:
+Este caso en concreto nos arrojaría la gráfica siguiente.
 
 ![drag-gif](images/bab3d.jpg)
 
-En cambio si lo modificamos para que posea una sola variable obtendremos algo como el siguiente ejemplo:
+Se puede apreciar la superficie que define la función en el centro de la animación y en la esquina superior izquierda van apareciendo las distintas restricciones que se van agregando al problema para conseguir una solución mínima con variables enteras. El punto azul en la gráfica es el punto actual analizado mientras que los verdes son puntos chequeados con anterioridad.
+
+En cambio si modificamos el problema para que posea una sola variable obtendremos una animación como el siguiente ejemplo:
 
 ![drag-gif](images/bab2d.jpg)
 
